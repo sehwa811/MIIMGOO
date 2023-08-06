@@ -16,7 +16,7 @@ const UserRouter = () => {
           <Route path="/bookmarks" element={<BookmarksPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/admin" element={<AdminPage />} />
-          <Route path="/accout" element={<AccoutPage />} />
+          <Route path="/account" element={<AccoutPage />} />
       </Routes>
     </>
   );

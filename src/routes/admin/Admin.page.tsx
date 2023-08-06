@@ -3,7 +3,7 @@ import UploadImage from "../../components/file-upload/UploadImage.component";
 export default function AdminPage() {
     return (
         <div>
-            <h1>Admin</h1>
+            <h1>관리자 페이지</h1>
             <UploadImage />
         </div>
     )
