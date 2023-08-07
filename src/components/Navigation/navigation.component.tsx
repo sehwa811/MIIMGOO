@@ -11,7 +11,7 @@ const NavBox = styled.nav`
   align-items: center;
   bottom: 0;
   width: 100%;
-  max-width: 28rem;
+  max-width: 24.375rem;
   height: 5rem;
   background: var(--main-blue);
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
