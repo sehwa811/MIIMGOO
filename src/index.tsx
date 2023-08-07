@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   height: 100vh;
-  background: linear-gradient(180deg, #ff7a00 0%, rgba(196, 196, 196, 0) 100%);
+  background: linear-gradient(180deg, #0500FF 0%, rgba(196, 196, 196, 0.00) 100%);
   background-repeat: no-repeat;
 `;
 

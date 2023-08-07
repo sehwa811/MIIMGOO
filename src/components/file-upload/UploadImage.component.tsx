@@ -2,12 +2,20 @@ import { useState } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
+import AWS from "aws-sdk";
+
 import styled from "styled-components";
 import { API_HOST } from "../../utils/API";
 import AllSelects from "../selectBox/AllSelects.component";
 import { selectTags } from "../../store/tags/TagSelector";
-import { selectImgTitle } from "../../store/image-upload/ImageSelector";
-import { dispatchToImageReducer } from "../../store/image-upload/ImageAction";
+import {
+  selectFormData,
+  selectImgObj,
+} from "../../store/image-upload/ImageSelector";
+import {
+  dispatchSetFormData,
+  dispatchToImageReducer,
+} from "../../store/image-upload/ImageAction";
 
 const UploadButton = styled.div`
   border: 2px solid black;
@@ -23,39 +31,42 @@ interface setImgFromFileProps {
 
 const UploadImage = (e: any) => {
   const tags = useSelector(selectTags);
+  const formData = useSelector(selectFormData);
   const tagList: string[] = Object.values(tags);
   const newList = tagList.filter((item) => !(item === null));
 
-  const imageTitle = useSelector(selectImgTitle);
-  
+  const imgObj = useSelector(selectImgObj);
+
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
 
-  let imgLocation: any = null;
-  const onImgChange = (e:any) => {
-    const formData = new FormData();
+  const onImgChange = (e: any) => {
     formData.append("file", e.target.files[0]);
     console.log(e.target.files[0]);
-    imgLocation = e.target.files[0].name;
-    dispatch(dispatchToImageReducer(imgLocation));
+    dispatch(dispatchToImageReducer(e.target.files[0]));
+    dispatch(dispatchSetFormData(formData));
   };
 
   const sendToServer = async (e: any) => {
-    let IMG_URL: string | null = null;
+    const postTheMeme = async (DATA: any) => {
+      const d = await axios.put(DATA, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(d.data);
 
-    const postTheMeme = async () => {
-      const res = await axios({
+      /* const res = await axios({
         baseURL: API_HOST,
         url: "/api/memes/",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         data: {
           title: inputText,
-          meme_url: IMG_URL,
+          meme_url: DATA.url,
           tags: newList,
         },
-      });
-      console.log(res.data);
+      }); */
     };
 
     axios({
@@ -64,17 +75,13 @@ const UploadImage = (e: any) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       data: {
-        filename: imageTitle,
+        filename: imgObj.name,
       },
     })
       .then((res) => {
-        console.log(res.data.url);
-        IMG_URL = res.data.url;
-        
-        const FIELDS = res.data.fields
-
-
-        postTheMeme();
+        const DATA = res.data;
+        postTheMeme(DATA);
+        console.log(DATA);
       })
       .catch((err) => {
         console.error(err);

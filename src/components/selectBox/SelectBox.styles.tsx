@@ -32,6 +32,7 @@ export const Wrapper = styled.div`
     font-weight: 500;
     line-height: normal;
     letter-spacing: -0.015rem;
+    width: 3rem;
   }
 `;
 

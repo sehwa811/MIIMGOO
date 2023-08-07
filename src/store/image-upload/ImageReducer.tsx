@@ -1,7 +1,8 @@
 import { ACTION } from "./ImageTypes";
 
 export interface imageContext {
-  imgTitle: string | null;
+  imgObj: any,
+  formData: any
 }
 
 export interface actionType {
@@ -10,7 +11,8 @@ export interface actionType {
 }
 
 const INITIAL_VALUE: imageContext = {
-  imgTitle: null,
+  imgObj: null,
+  formData: new FormData(),
 };
 
 export const ImageReducer = (
@@ -18,10 +20,11 @@ export const ImageReducer = (
   action: actionType
 ): imageContext => {
   const { type, payload } = action;
-  console.log(payload)
   switch (type) {
     case ACTION.SET_IMAGE_TITLE:
-      return {...state, imgTitle: payload};
+      return { ...state, imgObj: payload };
+    case ACTION.SET_FORM_DATA:
+      return { ...state, formData: payload};
     default:
       return state;
   }
