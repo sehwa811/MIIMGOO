@@ -5,6 +5,11 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
+import { store, persistor } from "./store/store";
+
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -15,16 +20,20 @@ const Wrapper = styled.div`
   height: 100vh;
   background: linear-gradient(180deg, #ff7a00 0%, rgba(196, 196, 196, 0) 100%);
   background-repeat: no-repeat;
-`
+`;
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Wrapper>
-      <App />
-    </Wrapper>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Wrapper>
+          <App />
+        </Wrapper>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 

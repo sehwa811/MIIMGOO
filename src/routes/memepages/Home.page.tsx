@@ -11,7 +11,6 @@ const Wrapper = styled.div`
 export default function HomePage() {
   const navigate = useNavigate();
 
-
   return (
     <Wrapper>
       <h1>Home</h1>

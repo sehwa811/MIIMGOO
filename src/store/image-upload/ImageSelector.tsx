@@ -1,0 +1,1 @@
+export const selectImgTitle = (state:any) => state.image.imgTitle;

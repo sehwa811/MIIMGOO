@@ -1,0 +1,1 @@
+export const selectTags = (state:any) => state.tag;

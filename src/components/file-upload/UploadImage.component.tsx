@@ -1,6 +1,13 @@
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+
 import styled from "styled-components";
+import { API_HOST } from "../../utils/API";
+import AllSelects from "../selectBox/AllSelects.component";
+import { selectTags } from "../../store/tags/TagSelector";
+import { selectImgTitle } from "../../store/image-upload/ImageSelector";
+import { dispatchToImageReducer } from "../../store/image-upload/ImageAction";
 
 const UploadButton = styled.div`
   border: 2px solid black;
@@ -15,21 +22,26 @@ interface setImgFromFileProps {
 }
 
 const UploadImage = (e: any) => {
-  const API_HOST = "http://backend.miimgoo.site";
-  const [imgUrl, setImgUrl] = useState(null);
+  const tags = useSelector(selectTags);
+  const tagList: string[] = Object.values(tags);
+  const newList = tagList.filter((item) => !(item === null));
+  console.log(newList);
 
-  /* const setImgFromFile = ({ file, setImgUrl }: setImgFromFileProps) => {
-    let reader = new FileReader();
-    reader.onload = function () {
-      setImgUrl({ result: reader.result });
-    };
-    reader.readAsDataURL(file);
-  }; */
+  const imageTitle = useSelector(selectImgTitle);
+  
+  const dispatch = useDispatch();
+  const [inputText, setInputText] = useState("");
 
-  const onImgChange = async (e: any) => {
+
+  let imgLocation: any = null;
+  const onImgChange = (e:any) => {
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
+    imgLocation = e.target.files[0].name;
+    dispatch(dispatchToImageReducer(imgLocation));
+  };
 
+  const sendToServer = async (e: any) => {
     let IMG_URL: string | null = null;
 
     const postTheMeme = async () => {
@@ -39,9 +51,9 @@ const UploadImage = (e: any) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         data: {
-          title: "TEST",
+          title: imageTitle,
           meme_url: IMG_URL,
-          tags: ["짱구"],
+          tags: tagList,
         },
       });
       console.log(res.data);
@@ -53,7 +65,7 @@ const UploadImage = (e: any) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       data: {
-        filename: e.target.files[0].name,
+        filename: imageTitle,
       },
     })
       .then((res) => {
@@ -69,7 +81,7 @@ const UploadImage = (e: any) => {
   return (
     <>
       <UploadButton>
-        <label htmlFor="input-file">사진 업로드</label>
+        <label htmlFor="input-file">사진 선택</label>
         <input
           type="file"
           id="input-file"
@@ -77,7 +89,13 @@ const UploadImage = (e: any) => {
           style={{ display: "none" }}
         />
       </UploadButton>
-      {imgUrl}
+      <input
+        type="text"
+        value={inputText}
+        onChange={(e: any) => setInputText(e.target.value)}
+      />
+      <AllSelects />
+      <button onClick={sendToServer}>등록하기</button>
     </>
   );
 };
