@@ -1,1 +1,1 @@
-export const API_HOST = "http://backend.miimgoo.site";
+export const API_HOST = "https://backend.miimgoo.site";

@@ -25,18 +25,17 @@ const UploadImage = (e: any) => {
   const tags = useSelector(selectTags);
   const tagList: string[] = Object.values(tags);
   const newList = tagList.filter((item) => !(item === null));
-  console.log(newList);
 
   const imageTitle = useSelector(selectImgTitle);
   
   const dispatch = useDispatch();
   const [inputText, setInputText] = useState("");
 
-
   let imgLocation: any = null;
   const onImgChange = (e:any) => {
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
+    console.log(e.target.files[0]);
     imgLocation = e.target.files[0].name;
     dispatch(dispatchToImageReducer(imgLocation));
   };
@@ -51,9 +50,9 @@ const UploadImage = (e: any) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         data: {
-          title: imageTitle,
+          title: inputText,
           meme_url: IMG_URL,
-          tags: tagList,
+          tags: newList,
         },
       });
       console.log(res.data);
@@ -71,6 +70,10 @@ const UploadImage = (e: any) => {
       .then((res) => {
         console.log(res.data.url);
         IMG_URL = res.data.url;
+        
+        const FIELDS = res.data.fields
+
+
         postTheMeme();
       })
       .catch((err) => {
