@@ -6,6 +6,8 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
 
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -30,17 +32,18 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+ 
     <QueryClientProvider client={client}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Wrapper>
             <App />
+            <ReactQueryDevtools />
           </Wrapper>
         </PersistGate>
       </Provider>
     </QueryClientProvider>
-  </React.StrictMode>
+
 );
 
 serviceWorkerRegistration.register();

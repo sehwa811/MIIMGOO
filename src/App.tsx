@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/naver-login" element={<NaverLoginPage />} />
+        <Route path="/social/naver" element={<NaverLoginPage />} />
         <Route path="/*" element={<Others />} />
       </Routes>
     </BrowserRouter>

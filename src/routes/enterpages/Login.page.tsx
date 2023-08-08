@@ -1,45 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Button from "../../components/button.component";
-import styled from "styled-components";
 import WelcomeMsg from "./WelcomeMsg.component";
+import { API_HOST } from "../../utils/API";
 
-const Background = styled.div`
-  background-color: var(--main-white);
-  height: 100vh;
-  padding-right: 1.25rem;
-  padding-left: 1.25rem;
-`;
-
-const LogoBox = styled.div`
-  width: 15rem;
-  height: 15rem;
-  border-radius: 2rem;
-  background-color: var(--main-orange);
-  position: relative;
-  top: 17.75rem;
-  left: 50%;
-  transform: translate(-50%, 0%);
-`;
-
-const ButtonBox = styled.div`
-  width: fit-content;
-  height: fit-content;
-  position: absolute;
-  bottom: 9.37rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const ButtonLabel = styled.span`
-  font-family: Spoqa Han Sans Neo;
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.02rem;
-`;
+import { Background, LogoBox, ButtonBox, ButtonLabel } from "./Login.styles";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -48,19 +14,25 @@ export default function LoginPage() {
     navigate("/home");
   };
 
-  const gotoNaverLogin = () => {
-    navigate("/naver-login");
+  const instance = axios.create({
+    baseURL: API_HOST,
+    withCredentials: true,
+  });
+
+  const naverLogin = async () => {
+    return instance.get("/api/users/naver/request").then((response) => {
+      window.location.href = response.data.url;
+    });
   };
+
 
   return (
     <Background className="login-page">
       <WelcomeMsg />
-
       <LogoBox></LogoBox>
-
       <ButtonBox>
         <Button
-          onClick={gotoNaverLogin}
+          onClick={naverLogin}
           color="white"
           background="#03C75A"
           border="none"
