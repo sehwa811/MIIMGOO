@@ -3,14 +3,23 @@ import UpperCardComponent from "./UpperCard.upper.component";
 
 import styled from "styled-components";
 
+const CardBox = styled.div`
+    display: flex;
+   
+`
+
 const HomeUpperComponent = () => {
     return (
         <div>
             <LabelComponent />
-            <div>
+            <CardBox>
                 <UpperCardComponent />
                 <UpperCardComponent />
-            </div>
+            </CardBox>
+            <CardBox>
+                <UpperCardComponent />
+                <UpperCardComponent />
+            </CardBox>
         </div>
     )
 };

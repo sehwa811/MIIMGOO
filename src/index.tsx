@@ -13,7 +13,7 @@ import { store, persistor } from "./store/store";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: 24.375rem;
   max-width: 24.375rem;
   margin-left: auto;
   margin-right: auto;

@@ -21,8 +21,7 @@ const UploadButton = styled.div`
   font-size: 1.5rem;
 `;
 
-
-const UploadImage = (e: any) => {
+const UploadImage = () => {
   const [inputText, setInputText] = useState("");
   const dispatch = useDispatch();
 

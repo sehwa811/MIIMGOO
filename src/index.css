@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'SpoqaHanSansNeo-Regular';
+  font-weight: normal;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -13,7 +20,7 @@ html {
 
 body {
     margin: 0;
-
+    font-family: 'Spoqa Han Sans Neo';
 }
 
 :root {
@@ -23,6 +30,8 @@ body {
   --typho-grey-1: #2D2D2D;
   --typho-grey-2: #4D4D4D;
   --typho-black-1: #111;
+  --main-typho-grey-1: #3B3F3C;
+  --main-grey-1: #4C504E;
 }
 
 #root {
