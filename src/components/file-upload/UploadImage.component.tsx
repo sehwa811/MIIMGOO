@@ -39,7 +39,9 @@ const UploadImage = () => {
   };
 
   const sendToServer = () => {
+    console.log("imgaeTitle", imageTitle)
     uploadS3(imageTitle, image, inputText, newList);
+    setInputText("");
   };
 
   return (

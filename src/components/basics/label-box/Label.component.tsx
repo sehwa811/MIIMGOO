@@ -1,4 +1,7 @@
+
+
 import styled from "styled-components";
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -6,27 +9,30 @@ const Wrapper = styled.div`
   padding: 0.5rem;
   align-items: center;
   gap: 0.625rem;
-  border-radius: 0.25rem;
-border: 1px solid var(--main-white, #FFF);
 
-span {
-    color: var(--main-white, #FFF);
-text-align: center;
-font-family: Spoqa Han Sans Neo;
-font-size: 1.25rem;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-letter-spacing: -0.025rem;
-}
+  border-radius: 0.25rem;
+  border: 1px solid var(--main-white, #fff);
+
+  span {
+    color: var(--main-white, #fff);
+    text-align: center;
+    font-family: Spoqa Han Sans Neo;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.025rem;
+  }
 `;
 
-const text = "지금 가장 HOT한 오늘의 밈";
+interface labelComponentProps {
+  labelText: string;
+}
 
-const LabelComponent = () => {
+const LabelComponent = ({labelText}:labelComponentProps) => {
   return (
     <Wrapper>
-      <span>{text}</span>
+      <span>{labelText}</span>
       {/* icon */}
     </Wrapper>
   );

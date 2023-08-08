@@ -54,6 +54,7 @@ export default function LoginPage() {
           <ButtonLabel>비회원으로 둘러보기</ButtonLabel>
         </Button>
       </ButtonBox>
+      
     </Background>
   );
 }

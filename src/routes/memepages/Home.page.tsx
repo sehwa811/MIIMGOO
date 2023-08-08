@@ -4,6 +4,7 @@ import styled from "styled-components";
 import MemeBox from "../../components/meme-box/MemeBox.component";
 import LogoComponent from "../../components/basics/logo/Logo.component";
 import HomeUpperComponent from "../../components/home-upper/HomeUpper.component";
+import HomeLowerComponent from "../../components/home-lower/HomeLower.component";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -16,6 +17,7 @@ export default function HomePage() {
     <Wrapper className="home">
       <LogoComponent />
       <HomeUpperComponent />
+      <HomeLowerComponent />
     </Wrapper>
   );
 }

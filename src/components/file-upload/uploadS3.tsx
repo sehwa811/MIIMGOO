@@ -21,7 +21,7 @@ export const uploadS3 = async (
         tags: tags,
       },
     });
-    console.log(res.data);
+    console.log(3333333333);
   };
 
   //1
@@ -35,7 +35,7 @@ export const uploadS3 = async (
     },
   }).then(async (res) => {
     const formData = new FormData();
-    console.log(res.data);
+    console.log("uploadURL", res.data);
     if (image !== null) {
       Object.keys(res.data.fields).forEach((key) => {
         formData.append(key, res.data.fields[key]);
@@ -43,7 +43,6 @@ export const uploadS3 = async (
       formData.append("file", image);
     }
     console.log(111111111);
-
     //403 에러나는 부분
     const uploadRes = await axios.post(res.data.url, formData, {
       headers: {
