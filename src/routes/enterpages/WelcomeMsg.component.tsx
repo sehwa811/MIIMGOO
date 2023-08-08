@@ -3,13 +3,13 @@ import styled from "styled-components";
 const StyledDiv = styled.div`
   width: fit-content;
   height: fit-content;
-  position: relative;
+  position: absolute;
   top: 7.12rem;
 
   h3 {
     font-size: 1.75rem;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: normal;
     letter-spacing: -0.035rem;
     color: var(--typho-black);

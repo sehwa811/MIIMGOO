@@ -3,13 +3,15 @@ import { ReactElement } from "react";
 import { ReactComponent as Home } from "../../svg/Home.svg";
 import { ReactComponent as Heartbeat } from "../../svg/Heartbeat.svg";
 import { ReactComponent as User } from "../../svg/User.svg";
+import { ReactComponent as Search } from "../../svg/Search.svg";
 
-
+import "./iconFactory.styles.css"
 
 const icons = {
   home: Home,
   heartbeat: Heartbeat,
   user: User,
+  search: Search,
 };
 
 export type IconType = keyof typeof icons;

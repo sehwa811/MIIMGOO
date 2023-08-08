@@ -1,0 +1,27 @@
+/* home */
+
+.active > g > path[id="Rectangle 1"] {
+    stroke: var(--main-white);
+}
+
+.active > g > path[id="Vector 3"]  {
+    stroke: var(--main-white);
+}
+
+/* search */
+.active > g > circle {
+    stroke: var(--main-white);
+}
+
+.active > g >  path[id="Ellipse 66"]  {
+    stroke: var(--main-white);
+}
+
+.active > g >  path[id="Vector 109"]  {
+    stroke: var(--main-white);
+}
+
+/* heartbeat */
+.active > g[id="Outline/Status/Heartbeat"] > path {
+    fill: var(--main-white)
+}

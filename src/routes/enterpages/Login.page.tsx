@@ -11,6 +11,17 @@ const Background = styled.div`
   padding-left: 1.25rem;
 `;
 
+const LogoBox = styled.div`
+  width: 15rem;
+  height: 15rem;
+  border-radius: 2rem;
+  background-color: var(--main-orange);
+  position: relative;
+  top: 17.75rem;
+  left: 50%;
+  transform: translate(-50%, 0%);
+`;
+
 const ButtonBox = styled.div`
   width: fit-content;
   height: fit-content;
@@ -37,13 +48,19 @@ export default function LoginPage() {
     navigate("/home");
   };
 
+  const gotoNaverLogin = () => {
+    navigate("/naver-login");
+  };
+
   return (
     <Background className="login-page">
       <WelcomeMsg />
 
+      <LogoBox></LogoBox>
+
       <ButtonBox>
         <Button
-          onClick={gotoHome}
+          onClick={gotoNaverLogin}
           color="white"
           background="#03C75A"
           border="none"
@@ -54,7 +71,6 @@ export default function LoginPage() {
           <ButtonLabel>비회원으로 둘러보기</ButtonLabel>
         </Button>
       </ButtonBox>
-      
     </Background>
   );
 }
