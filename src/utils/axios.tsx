@@ -21,3 +21,8 @@ export const naverLogin = (code: string) =>
       }
     )
     .then((response) => response.status);
+
+export const getNaverUrl = async () =>
+  instance.get("users/naver/request").then((response) => {
+    window.location.href = response.data.url;
+  });

@@ -6,6 +6,7 @@ import WelcomeMsg from "./WelcomeMsg.component";
 import { API_HOST } from "../../utils/API";
 
 import { Background, LogoBox, ButtonBox, ButtonLabel } from "./Login.styles";
+import { getNaverUrl } from "../../utils/axios";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -14,25 +15,14 @@ export default function LoginPage() {
     navigate("/home");
   };
 
-  const instance = axios.create({
-    baseURL: API_HOST,
-    withCredentials: true,
-  });
-
-  const naverLogin = async () => {
-    return instance.get("/api/users/naver/request").then((response) => {
-      window.location.href = response.data.url;
-    });
-  };
-
-
+ 
   return (
     <Background className="login-page">
       <WelcomeMsg />
       <LogoBox></LogoBox>
       <ButtonBox>
         <Button
-          onClick={naverLogin}
+          onClick={getNaverUrl}
           color="white"
           background="#03C75A"
           border="none"
