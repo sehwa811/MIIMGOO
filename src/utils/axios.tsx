@@ -12,7 +12,7 @@ const instance = axios.create({
 export const naverLogin = (code: string) =>
   instance
     .post(
-      "/users/naver/",
+      "users/naver/",
       { code, state: "miimgoo" },
       {
         headers: {
