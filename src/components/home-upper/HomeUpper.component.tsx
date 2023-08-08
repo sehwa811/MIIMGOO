@@ -5,6 +5,12 @@ import { upperText, lowerText } from "../basics/label-box/label-text";
 
 import styled from "styled-components";
 
+const UpperBody = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+`
+
 const CardBox = styled.div`
   display: flex;
 `;
@@ -12,7 +18,7 @@ const CardBox = styled.div`
 const HomeUpperComponent = () => {
   return (
     <>
-      <div className="upper-body">
+      <UpperBody className="upper-body">
         <LabelComponent labelText={upperText} />
         <CardBox>
           <UpperCardComponent />
@@ -22,7 +28,7 @@ const HomeUpperComponent = () => {
           <UpperCardComponent />
           <UpperCardComponent />
         </CardBox>
-      </div>
+      </UpperBody>
 
     </>
   );

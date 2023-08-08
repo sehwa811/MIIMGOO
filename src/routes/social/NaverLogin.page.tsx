@@ -3,6 +3,7 @@ import axios, { Axios } from "axios";
 import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Cookie from "js-cookie";
+import LoginLoadingPage from "./LoginLoading.component";
 
 export default function NaverLoginPage() {
   const kakaoLogin = (code: string) =>
@@ -42,5 +43,5 @@ export default function NaverLoginPage() {
   useEffect(() => {
     confirmLogin();
   }, []);
-  return <div>Naver Login 중...</div>;
+  return <LoginLoadingPage />;
 }
