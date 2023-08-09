@@ -11,10 +11,8 @@ const ContentsRouters = () => {
     <Routes>
       <Route path="/home" element={<HomePage />} />
       <Route path="/detail" element={<Detail />} /> {/* "/detail:imageID" */}
-
       <Route path="/bookmarks" element={<BookmarksPage />} />
       <Route path="/search" element={<SearchPage />} />
-      
       <Route path="/account" element={<AccoutPage />} />
       <Route path="/admin" element={<AdminPage />} />
     </Routes>
