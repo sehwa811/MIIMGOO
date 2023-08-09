@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookie from "js-cookie";
 
 import { API_HOST } from "./API";
+import { ITag } from "../components/file-upload/TagUpload";
 
 const instance = axios.create({
   baseURL:
@@ -91,3 +92,8 @@ export const uploadToS3 = async (
 export const getHomeImg = async () => {
   return await instance.get("memes").then((res) => res.data);
 };
+
+export const getTagsList = () => instance.get("tags/").then((res) => res.data);
+
+export const postTagsList = (tagList: ITag[]) =>
+  instance.post("tags/", tagList).then((res) => res.data);

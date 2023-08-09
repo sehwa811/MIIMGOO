@@ -10,6 +10,7 @@ import {
 import { setImageTitle, setImage } from "../../store/image-upload/ImageAction";
 
 import { uploadToS3 } from "../../utils/axios";
+import TagRegistration from "./TagUpload";
 
 const UploadButton = styled.div`
   border: 2px solid black;
@@ -59,6 +60,7 @@ const UploadImage = () => {
       />
       <AllSelects />
       <button onClick={sendToServer}>등록하기</button>
+      <TagRegistration />
     </>
   );
 };
