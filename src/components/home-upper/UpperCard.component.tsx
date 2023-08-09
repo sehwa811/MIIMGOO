@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { selectHomeImg } from "../../store/home-images/HomeImgSelector";
 
 const CardBox = styled.div`
-  width: 11rem;
+  width: 10.5rem;
   height: 16.1875rem;
   border-radius: 0.5rem;
   border: 1px solid var(--typho-black-1);
@@ -14,23 +14,22 @@ const CardBox = styled.div`
 `;
 
 const ImageBox = styled.div`
-  width: 10rem;
+  width: 9.5rem;
   height: 12.5rem;
   border-radius: 0.5rem;
   border: 1px solid var(--typho-black-1);
 
   img {
-    width: 9.9rem;
+    width: 9.4rem;
     height: 12.4rem;
     object-fit: cover;
     border-radius: 0.5rem;
   }
 `;
 
-const UpperCardComponent = () => {
+const UpperCardComponent = (imageData:any) => {
   const navigate = useNavigate();
-  const imageArray = useSelector(selectHomeImg);
-  const ARRAY:any =  Object.values(imageArray);
+  const { title, meme_url } = imageData;
 
   //수정
   const goToDetail = () => {
@@ -39,14 +38,13 @@ const UpperCardComponent = () => {
   };
 
   return (
-    imageArray && (
-      <CardBox onClick={goToDetail}>
-        <ImageBox>{/* <img src={ARRAY[0].thumbnail} /> */}</ImageBox>
 
-        <div>Title</div>
+      <CardBox onClick={goToDetail}>
+        <ImageBox><img src={meme_url} /></ImageBox>
+        <div>{title}</div>
         <div>Likes</div>
       </CardBox>
-    )
+  
   );
 };
 

@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookie from "js-cookie";
 
 import { API_HOST } from "./API";
+import { useMutation } from "@tanstack/react-query";
 
 const instance = axios.create({
   baseURL:
@@ -38,7 +39,7 @@ export const uploadToS3 = async (
   tags: string[]
 ) => {
   //2
-  const postTheMeme = async (URL: string) => {
+  const postTheMeme = async (URL: string, keyValue:string) => {
     const res = await axios({
       baseURL: API_HOST,
       url: "/api/memes/",
@@ -46,7 +47,7 @@ export const uploadToS3 = async (
       headers: { "Content-Type": "application/json" },
       data: {
         title: inputTitle,
-        meme_url: URL,
+        meme_url: `${URL}/${keyValue}`,
         tags: tags,
       },
     });
@@ -64,7 +65,9 @@ export const uploadToS3 = async (
     },
   }).then(async (res) => {
     const formData = new FormData();
-    console.log("uploadURL", res.data);
+    const keyValue = res.data.fields.key;
+    console.log(keyValue) 
+
     if (image !== null) {
       Object.keys(res.data.fields).forEach((key) => {
         formData.append(key, res.data.fields[key]);
@@ -82,7 +85,7 @@ export const uploadToS3 = async (
 
     if (uploadRes.status === 204) {
       console.log(2222222222);
-      postTheMeme(res.data.url);
+      postTheMeme(res.data.url, keyValue);
     }
   });
 };
@@ -91,3 +94,7 @@ export const uploadToS3 = async (
 export const getHomeImg = async () => {
   return await instance.get("memes").then((res) => res.data);
 };
+
+export const useGetHomeImgMutation = () => {
+  return useMutation(getHomeImg);
+}
