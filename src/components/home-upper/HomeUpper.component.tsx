@@ -5,7 +5,7 @@ import { upperText, lowerText } from "../basics/label-box/label-text";
 
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { getHomeImg, useGetHomeImgMutation } from "../../utils/axios";
+import { getHomeImg } from "../../utils/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setHomeImage } from "../../store/home-images/HomeImgAction";
 import { useNavigate } from "react-router-dom";
@@ -31,22 +31,19 @@ const HomeUpperComponent = () => {
   const rawData:any = useSelector(selectHomeImg);
   const imageArray: any = Object.values(rawData);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const callAPIfunc = async () => {
       const data = await getHomeImg();
       dispatch(setHomeImage(data));
     };
     callAPIfunc();
-  }, []); */
+  }, []);
 
-  const { data, mutate, isLoading, isError, error } = useGetHomeImgMutation();
-  mutate(data)
+
 
   return (
     <>
-      {isLoading ? (
-        "Loading..."
-      ) : (
+      
         <UpperBody className="upper-body">
           <LabelComponent labelText={upperText} />
           <CardBox>
@@ -58,7 +55,7 @@ const HomeUpperComponent = () => {
             <UpperCardComponent imageData={imageArray[3]} />
           </CardBox>
         </UpperBody>
-      )}
+      
     </>
   );
 };
