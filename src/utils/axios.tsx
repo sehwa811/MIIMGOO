@@ -2,7 +2,8 @@ import axios from "axios";
 import Cookie from "js-cookie";
 
 import { API_HOST } from "./API";
-import { useMutation } from "@tanstack/react-query";
+
+import { ITag } from "../components/file-upload/TagUpload";
 
 const instance = axios.create({
   baseURL:
@@ -95,6 +96,9 @@ export const getHomeImg = async () => {
   return await instance.get("memes").then((res) => res.data);
 };
 
-export const useGetHomeImgMutation = () => {
-  return useMutation(getHomeImg);
-}
+
+export const getTagsList = () => instance.get("tags/").then((res) => res.data);
+
+export const postTagsList = (tagList: ITag[]) =>
+  instance.post("tags/", tagList).then((res) => res.data);
+
