@@ -43,7 +43,6 @@ const HomeUpperComponent = () => {
 
   return (
     <>
-      
         <UpperBody className="upper-body">
           <LabelComponent labelText={upperText} />
           <CardBox>

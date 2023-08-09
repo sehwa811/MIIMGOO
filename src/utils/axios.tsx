@@ -40,7 +40,7 @@ export const uploadToS3 = async (
   tags: string[]
 ) => {
   //2
-  const postTheMeme = async (URL: string, keyValue:string) => {
+  const postTheMeme = async (URL: string, keyValue: string) => {
     const res = await axios({
       baseURL: API_HOST,
       url: "/api/memes/",
@@ -67,7 +67,7 @@ export const uploadToS3 = async (
   }).then(async (res) => {
     const formData = new FormData();
     const keyValue = res.data.fields.key;
-    console.log(keyValue) 
+    console.log(keyValue);
 
     if (image !== null) {
       Object.keys(res.data.fields).forEach((key) => {
@@ -96,9 +96,13 @@ export const getHomeImg = async () => {
   return await instance.get("memes").then((res) => res.data);
 };
 
-
 export const getTagsList = () => instance.get("tags/").then((res) => res.data);
 
 export const postTagsList = (tagList: ITag[]) =>
-  instance.post("tags/", tagList).then((res) => res.data);
-
+  instance
+    .post("tags/", tagList, {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((res) => res.data);
