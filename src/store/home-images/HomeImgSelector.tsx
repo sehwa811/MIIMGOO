@@ -1,0 +1,1 @@
+export const selectHomeImg = (state:any) => state.homeImage;

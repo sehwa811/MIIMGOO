@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import Button from "../../components/button.component";
+import Button from "../../components/basics/button.component";
 import WelcomeMsg from "./WelcomeMsg.component";
 import { API_HOST } from "../../utils/API";
 

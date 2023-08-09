@@ -1,7 +1,7 @@
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
-
+import { selectHomeImg } from "../../store/home-images/HomeImgSelector";
 
 const CardBox = styled.div`
   width: 11rem;
@@ -29,22 +29,24 @@ const ImageBox = styled.div`
 
 const UpperCardComponent = () => {
   const navigate = useNavigate();
+  const imageArray = useSelector(selectHomeImg);
+  const ARRAY:any =  Object.values(imageArray);
 
   //수정
   const goToDetail = () => {
     //navigate(`/detail/${imageID}`)
-    navigate("/detail")
+    navigate("/detail");
   };
 
   return (
-    <CardBox onClick={goToDetail}>
-      <ImageBox>
-        {/* <img src={frog} /> */}
-      </ImageBox>
+    imageArray && (
+      <CardBox onClick={goToDetail}>
+        <ImageBox>{/* <img src={ARRAY[0].thumbnail} /> */}</ImageBox>
 
-      <div>Title</div>
-      <div>Likes</div>
-    </CardBox>
+        <div>Title</div>
+        <div>Likes</div>
+      </CardBox>
+    )
   );
 };
 

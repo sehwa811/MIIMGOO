@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
 
 import CustomSelectBox from "./SelectBox.component";
-import { selectTags } from "../../store/tags/TagSelector";
+import { selectTags } from "../../../../store/tags/TagSelector";
 
 import {
   circumOptions,
   emotionOptions,
   peopleOptions,
   othersOptions,
-} from "../../data/tags/options";
+} from "../../../../data/tags/options";
 
 const AllSelects = () => {
   const { circum, people, emotions, others } = useSelector(selectTags);

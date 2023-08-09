@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
-import Button from "../../components/button.component";
+import Button from "../../../components/basics/button.component";
 
-import { ReactComponent as Heart } from "../../svg/Heartbeat.white.svg";
-import { ReactComponent as Download } from "../../svg/Download_light.svg";
+import { ReactComponent as Heart } from "../../../svg/Heartbeat.white.svg";
+import { ReactComponent as Download } from "../../../svg/Download_light.svg";
 
 const Wrapper = styled.div`
   display: flex;

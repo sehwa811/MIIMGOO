@@ -1,18 +1,15 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import AllSelects from "../selectBox/AllSelects.component";
+import AllSelects from "../../routes/admin/component/selectBox/AllSelects.component";
 import { selectTags } from "../../store/tags/TagSelector";
 import {
   selectImg,
   selectImgTitle,
 } from "../../store/image-upload/ImageSelector";
-import {
-  setImageTitle,
-  setImage,
-} from "../../store/image-upload/ImageAction";
+import { setImageTitle, setImage } from "../../store/image-upload/ImageAction";
 
-import { uploadS3 } from "./uploadS3";
+import { uploadToS3 } from "../../utils/axios";
 
 const UploadButton = styled.div`
   border: 2px solid black;
@@ -39,8 +36,8 @@ const UploadImage = () => {
   };
 
   const sendToServer = () => {
-    console.log("imgaeTitle", imageTitle)
-    uploadS3(imageTitle, image, inputText, newList);
+    console.log("imgaeTitle", imageTitle);
+    uploadToS3(imageTitle, image, inputText, newList);
     setInputText("");
   };
 

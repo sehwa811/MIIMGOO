@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "./button.component";
+import Button from "../../../components/basics/button.component";
 
 interface modalProps {
   success: boolean;

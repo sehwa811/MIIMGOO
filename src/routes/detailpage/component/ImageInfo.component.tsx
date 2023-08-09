@@ -1,4 +1,4 @@
-import { ReactComponent as Folder } from "../../svg/Folder.svg";
+import { ReactComponent as Folder } from "../../../svg/Folder.svg";
 
 import styled from "styled-components";
 
@@ -23,7 +23,6 @@ const ImageTitleBox = styled.div`
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.7);
 `;
 
-
 const TitleSpan = styled.span`
   color: var(--main-white);
   text-align: center;
@@ -41,6 +40,13 @@ const ImageDisplay = styled.div`
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
   border: 1px solid black;
   border-radius: 0.25rem;
+
+  img {
+    width: 16.24rem;
+    height: 19rem;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
 `;
 
 const TagList = styled.div``;

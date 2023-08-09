@@ -2,11 +2,11 @@ import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { SelectBox, Wrapper, SelectOptions, Option } from "./SelectBox.styles";
-import { ReactComponent as Expand } from "../../svg/Expand_down.svg";
-import { selectTags } from "../../store/tags/TagSelector";
+import { ReactComponent as Expand } from "../../../../svg/Expand_down.svg";
+import { selectTags } from "../../../../store/tags/TagSelector";
 
-import { circumOptions } from "../../data/tags/options";
-import { dispatchToReducer } from "../../store/tags/TagAction";
+import { circumOptions } from "../../../../data/tags/options";
+import { dispatchToReducer } from "../../../../store/tags/TagAction";
 
 interface customSelectProps {
   optionArray: string[];
