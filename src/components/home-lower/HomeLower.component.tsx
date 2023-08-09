@@ -22,6 +22,7 @@ const HomeLowerComponent = () => {
         <LowerCardComponent />
         <LowerCardComponent />
         <LowerCardComponent />
+        <LowerCardComponent />
       </LowerBody>
     </>
   );

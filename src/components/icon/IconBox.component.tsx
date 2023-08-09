@@ -25,7 +25,6 @@ const StyledDiv = styled.div`
   flex-direction: column;
   align-items: center;
 
-
   border-radius: 0.75rem;
   background: #0075ff;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);

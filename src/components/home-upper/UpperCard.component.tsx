@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
+
 
 const CardBox = styled.div`
   width: 11rem;
@@ -15,12 +18,30 @@ const ImageBox = styled.div`
   height: 12.5rem;
   border-radius: 0.5rem;
   border: 1px solid var(--typho-black-1);
+
+  img {
+    width: 9.9rem;
+    height: 12.4rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
 `;
 
 const UpperCardComponent = () => {
+  const navigate = useNavigate();
+
+  //수정
+  const goToDetail = () => {
+    //navigate(`/detail/${imageID}`)
+    navigate("/detail")
+  };
+
   return (
-    <CardBox>
-      <ImageBox>imgFile</ImageBox>
+    <CardBox onClick={goToDetail}>
+      <ImageBox>
+        {/* <img src={frog} /> */}
+      </ImageBox>
+
       <div>Title</div>
       <div>Likes</div>
     </CardBox>
