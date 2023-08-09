@@ -27,7 +27,7 @@ const AllSelects = () => {
   return (
     <>
       {isLoading ? (
-        <div>1</div>
+        <div />
       ) : (
         <>
           <CustomSelectBox
