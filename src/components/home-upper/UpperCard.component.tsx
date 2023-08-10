@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { selectHomeImg } from "../../store/home-images/HomeImgSelector";
+import { useQuery } from "@tanstack/react-query";
+import { getHomeImg } from "../../utils/axios";
+import { useEffect, useState } from "react";
 
 const CardBox = styled.div`
   width: 10.5rem;
@@ -27,24 +30,32 @@ const ImageBox = styled.div`
   }
 `;
 
-const UpperCardComponent = (imageData:any) => {
+interface uppercardProps {
+  image: any;
+}
+
+const UpperCardComponent = ({ image = null }: uppercardProps) => {
   const navigate = useNavigate();
-  const { title, meme_url } = imageData;
 
   //수정
   const goToDetail = () => {
-    //navigate(`/detail/${imageID}`)
-    navigate("/detail");
+    navigate(`/detail/${image.pk}`, { state: image.pk })
   };
 
   return (
-
-      <CardBox onClick={goToDetail}>
-        <ImageBox><img src={meme_url} /></ImageBox>
-        <div>{title}</div>
-        <div>Likes</div>
-      </CardBox>
-  
+    <>
+      {image ? (
+        <CardBox onClick={goToDetail}>
+          <ImageBox>
+            <img src={image.meme_url} />
+          </ImageBox>
+          <div>{image.title}</div>
+          <div>{image.favorites}</div>
+        </CardBox>
+      ) : (
+        <div></div>
+      )}
+    </>
   );
 };
 

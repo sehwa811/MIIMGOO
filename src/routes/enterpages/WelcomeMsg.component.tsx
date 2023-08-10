@@ -4,7 +4,7 @@ const StyledDiv = styled.div`
   width: fit-content;
   height: fit-content;
   position: absolute;
-  top: 7.12rem;
+  top: 13.517%;
 
   h3 {
     font-size: 1.75rem;

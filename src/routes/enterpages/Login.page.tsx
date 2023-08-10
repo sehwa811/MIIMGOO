@@ -8,6 +8,8 @@ import { API_HOST } from "../../utils/API";
 import { Background, LogoBox, ButtonBox, ButtonLabel } from "./Login.styles";
 import { getNaverUrl } from "../../utils/axios";
 
+import Logo from "./Logo.png";
+
 export default function LoginPage() {
   const navigate = useNavigate();
 
@@ -19,7 +21,7 @@ export default function LoginPage() {
   return (
     <Background className="login-page">
       <WelcomeMsg />
-      <LogoBox></LogoBox>
+      <LogoBox><img src={Logo} /></LogoBox>
       <ButtonBox>
         <Button
           onClick={getNaverUrl}

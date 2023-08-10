@@ -1,6 +1,7 @@
 import { ReactComponent as Folder } from "../../../svg/Folder.svg";
 
 import styled from "styled-components";
+import TagListComponent from "./TagList/TagList";
 
 const ImageInfoWrapper = styled.div`
   width: 100%;
@@ -14,7 +15,7 @@ const ImageTitleBox = styled.div`
   height: 3.125rem;
   display: inline-flex;
   padding: 0.625rem 0.625rem 0.625rem 0.75rem;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 2.5rem;
 
@@ -43,7 +44,7 @@ const ImageDisplay = styled.div`
 
   img {
     width: 16.24rem;
-    height: 19rem;
+    height: 19.9rem;
     object-fit: cover;
     border-radius: 0.25rem;
   }
@@ -52,18 +53,34 @@ const ImageDisplay = styled.div`
 const TagList = styled.div``;
 
 //props: imageFIle, imageTitle, tag list
-const ImageInfo = () => {
+const ImageInfo = ({detailInfo}: any) => {
+  const tagList = detailInfo.tags;
+  console.log(tagList)
+  const tagValues:string[] = [];
+
+  for (const item in tagList) {
+    tagValues.push(tagList[item].name)
+  }
+console.log(tagValues)
+
   return (
-    <ImageInfoWrapper className="image-info">
-      <ImageTitleBox>
-        <TitleSpan>TitleTitleTitleTitle</TitleSpan>
-        <Folder />
-      </ImageTitleBox>
+    <>
+      {detailInfo ? (
+        <ImageInfoWrapper className="image-info">
+          <ImageTitleBox>
+            <TitleSpan>{detailInfo.title}</TitleSpan>
+            <Folder />
+          </ImageTitleBox>
 
-      <ImageDisplay>Image display</ImageDisplay>
+          <ImageDisplay><img src={detailInfo.meme_url} /></ImageDisplay>
 
-      <div>Tag list</div>
-    </ImageInfoWrapper>
+          <TagListComponent tags={tagValues} />
+
+        </ImageInfoWrapper>
+      ) : (
+        <div></div>
+      )}
+    </>
   );
 };
 

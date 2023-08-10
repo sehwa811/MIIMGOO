@@ -92,9 +92,16 @@ export const uploadToS3 = async (
 };
 
 //홈 화면 이미지 4개 랜덤 GET
-export const getHomeImg = async () => {
-  return await instance.get("memes").then((res) => res.data);
-};
+export const getHomeImg = () => instance.get("memes/").then((res) => res.data);
+
+
+export const getImgDetail = (state: number) =>
+  instance.get(`memes/${state}/`).then((res) => res.data);
+
+
+
+
+
 
 export const getTagsList = () => instance.get("tags/").then((res) => res.data);
 

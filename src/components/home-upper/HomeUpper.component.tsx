@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setHomeImage } from "../../store/home-images/HomeImgAction";
 import { useNavigate } from "react-router-dom";
 import { selectHomeImg } from "../../store/home-images/HomeImgSelector";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 const UpperBody = styled.div`
   display: flex;
@@ -24,37 +24,36 @@ const CardBox = styled.div`
 `;
 
 const HomeUpperComponent = () => {
-  const dispatch = useDispatch();
-  
-  const [state, setState] = useState();
+  const [rawData, setRawData] = useState("");
 
-  const rawData:any = useSelector(selectHomeImg);
-  const imageArray: any = Object.values(rawData);
+  const { data, isError, isLoading } = useQuery(["homeimage"], getHomeImg, {
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+  });
 
   useEffect(() => {
-    const callAPIfunc = async () => {
-      const data = await getHomeImg();
-      dispatch(setHomeImage(data));
-    };
-    callAPIfunc();
-  }, []);
-
-
+    if (data) {
+      setRawData(data);
+    }
+  }, [data]);
 
   return (
     <>
+      {isLoading ? (
+        <div></div>
+      ) : (
         <UpperBody className="upper-body">
           <LabelComponent labelText={upperText} />
           <CardBox>
-            <UpperCardComponent imageData={imageArray[0]} />
-            <UpperCardComponent imageData={imageArray[1]} />
+            <UpperCardComponent image={rawData[0]} />
+            <UpperCardComponent image={rawData[1]} />
           </CardBox>
           <CardBox>
-            <UpperCardComponent imageData={imageArray[2]} />
-            <UpperCardComponent imageData={imageArray[3]} />
+            <UpperCardComponent image={rawData[2]} />
+            <UpperCardComponent image={rawData[3]} />
           </CardBox>
         </UpperBody>
-      
+      )}
     </>
   );
 };

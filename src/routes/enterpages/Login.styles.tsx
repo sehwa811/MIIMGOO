@@ -13,16 +13,21 @@ export const LogoBox = styled.div`
   border-radius: 2rem;
   background-color: var(--main-orange);
   position: relative;
-  top: 17.75rem;
+  top: 33.649%;
   left: 50%;
   transform: translate(-50%, 0%);
+
+  img {
+    width: 15rem;
+    height: 15rem;
+  }
 `;
 
 export const ButtonBox = styled.div`
   width: fit-content;
   height: fit-content;
   position: absolute;
-  bottom: 9.37rem;
+  bottom: 13.27%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
