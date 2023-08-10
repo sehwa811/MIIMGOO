@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import BookmarksPage from "./Bookmarks.page";
-import SearchPage from "./Search.page";
+import SearchPage from "../searchpage/Search.page";
 import AdminPage from "../admin/Admin.page";
 import AccoutPage from "../account/Account.page";
 import Detail from "../detailpage/Detail.page";

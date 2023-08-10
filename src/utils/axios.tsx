@@ -101,8 +101,6 @@ export const getImgDetail = (state: number) =>
 
 
 
-
-
 export const getTagsList = () => instance.get("tags/").then((res) => res.data);
 
 export const postTagsList = (tagList: ITag[]) =>

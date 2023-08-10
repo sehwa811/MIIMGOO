@@ -72,7 +72,7 @@ console.log(tagValues)
             <Folder />
           </ImageTitleBox>
 
-          <ImageDisplay><img src={detailInfo.meme_url} /></ImageDisplay>
+          <ImageDisplay><img id={detailInfo.meme_url} src={detailInfo.meme_url} /></ImageDisplay>
 
           <TagListComponent tags={tagValues} />
 

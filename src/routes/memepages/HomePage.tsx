@@ -8,7 +8,7 @@ import { getHomeImg } from "../../utils/axios";
 import { useEffect, useState } from "react";
 
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 100%;
 `;
 
 export default function HomePage() {

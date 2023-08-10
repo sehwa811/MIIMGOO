@@ -1,8 +1,10 @@
+import html2canvas from 'html2canvas';
 import { styled } from "styled-components";
-import Button from "../../../components/basics/button.component";
 
+import Button from "../../../components/basics/button.component";
 import { ReactComponent as Heart } from "../../../svg/Heartbeat.white.svg";
 import { ReactComponent as Download } from "../../../svg/Download_light.svg";
+import { saveAs } from 'file-saver';
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,37 +29,70 @@ const InsideContents = styled.div`
   align-items: center;
 `;
 
-const ButtonBox = () => {
-  return (
-    <Wrapper className="button-box">
-      <Button
-        color="white"
-        background="#0075FF"
-        border="1px solid #000;"
-        height="2.25rem"
-        shadow="2px 2px 2px 0px rgba(0, 0, 0, 0.25)"
-        borderradius="0.25rem"
-      >
-        <InsideContents className="button-inside">
-          <ButtonLabel>다운로드</ButtonLabel>
-          <Download />
-        </InsideContents>
-      </Button>
+const ButtonBox = ({ detailInfo }: any) => {
+  const url:string = detailInfo.meme_url
 
-      <Button
-        border="1px solid white;"
-        color="white"
-        background="transparent"
-        height="2.25rem"
-        shadow="2px 2px 2px 0px rgba(0, 0, 0, 0.25)"
-        borderradius="0.25rem"
-      >
-        <InsideContents className="button-inside">
-          <ButtonLabel>즐겨찾기</ButtonLabel>
-          <Heart />
-        </InsideContents>
-      </Button>
-    </Wrapper>
+  //CORS block
+  const downloadImg = async () => {
+    const a = document.createElement("a");
+    a.href = await toDataURL(url);
+    a.download = "test";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
+  function toDataURL(url:string) {
+    return fetch(url)
+      .then((response) => {
+        return response.blob();
+      })
+      .then((blob) => {
+        return URL.createObjectURL(blob);
+      });
+  }
+
+  /* const downloadImg = () => {
+    saveAs(detailInfo.meme_url, "filename")
+  } */
+
+  return (
+    <>
+      {detailInfo ? (
+        <Wrapper className="button-box">
+          <Button 
+            onClick={downloadImg}
+            color="white"
+            background="#0075FF"
+            border="1px solid #000;"
+            height="2.25rem"
+            shadow="2px 2px 2px 0px rgba(0, 0, 0, 0.25)"
+            borderradius="0.25rem"
+          >
+            <InsideContents className="button-inside" >
+                <ButtonLabel>다운로드</ButtonLabel>
+              <Download />
+            </InsideContents>
+          </Button>
+
+          <Button
+            border="1px solid white;"
+            color="white"
+            background="transparent"
+            height="2.25rem"
+            shadow="2px 2px 2px 0px rgba(0, 0, 0, 0.25)"
+            borderradius="0.25rem"
+          >
+            <InsideContents className="button-inside">
+              <ButtonLabel>즐겨찾기</ButtonLabel>
+              <Heart />
+            </InsideContents>
+          </Button>
+        </Wrapper>
+      ) : (
+        <div />
+      )}
+    </>
   );
 };
 

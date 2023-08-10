@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-const TagBox = styled.div`
+export const TagBox = styled.div`
+  width: fit-content;
   display: flex;
   padding: 0.5rem 0.75rem;
   justify-content: center;
@@ -11,8 +12,8 @@ const TagBox = styled.div`
   background: #fff;
 
   span {
+    
     color: var(--typho-black-1, #111);
-    /* Sub_Regular3 */
     font-family: Spoqa Han Sans Neo;
     font-size: 0.75rem;
     font-style: normal;
