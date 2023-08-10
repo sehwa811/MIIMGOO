@@ -94,12 +94,8 @@ export const uploadToS3 = async (
 //홈 화면 이미지 4개 랜덤 GET
 export const getHomeImg = () => instance.get("memes/").then((res) => res.data);
 
-
 export const getImgDetail = (state: number) =>
   instance.get(`memes/${state}/`).then((res) => res.data);
-
-
-
 
 export const getTagsList = () => instance.get("tags/").then((res) => res.data);
 
@@ -111,3 +107,21 @@ export const postTagsList = (tagList: ITag[]) =>
       },
     })
     .then((res) => res.data);
+
+export const getSearchResult = (state: any) =>
+  instance
+    .get(`memes/search/tag/?tags=["행복", "짱구"]`)
+    .then((res) => res.data);
+
+export const postComment = (id: number, text: string) =>
+  instance
+    .post(
+      `http://backend.miimgoo.site/api/memes/${id}/comment`,
+      { description: text },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+    .then((res) => res.data);
+//id, text 잘 넘어가는데 CORS 뜸
+//tex

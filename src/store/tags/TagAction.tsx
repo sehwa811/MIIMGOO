@@ -4,3 +4,6 @@ import { actionType } from "./TagReducer";
 
 export const dispatchToReducer = (payload: actionType) =>
   createAction(ACTION.ADD, payload);
+
+export const searchTagAdd = (payload: actionType) =>
+  createAction(ACTION.SEARCH_ADD, payload);

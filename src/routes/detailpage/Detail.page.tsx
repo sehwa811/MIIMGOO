@@ -39,7 +39,7 @@ export default function Detail() {
           <LogoPart />
           <ImageInfo detailInfo={detailInfo} />
           <ButtonBox detailInfo={detailInfo} />
-          <CommentBox />
+          <CommentBox detailInfo={detailInfo} />
         </div>
       ) : (
         <div></div>

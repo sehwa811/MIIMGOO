@@ -31,7 +31,6 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
- 
     <QueryClientProvider client={client}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
@@ -42,7 +41,6 @@ root.render(
         </PersistGate>
       </Provider>
     </QueryClientProvider>
-
 );
 
 serviceWorkerRegistration.register();

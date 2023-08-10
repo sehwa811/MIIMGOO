@@ -18,7 +18,7 @@ const UpperBody = styled.div`
   gap: 0.75rem;
 `;
 
-const CardBox = styled.div`
+export const CardBox = styled.div`
   display: flex;
   justify-content: space-between;
 `;

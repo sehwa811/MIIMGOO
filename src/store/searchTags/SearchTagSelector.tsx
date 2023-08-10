@@ -1,0 +1,1 @@
+export const selectSearchTags = (state:any) => state.searchTags.searchTags;

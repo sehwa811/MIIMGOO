@@ -5,6 +5,7 @@ import SearchPage from "../searchpage/Search.page";
 import AdminPage from "../admin/Admin.page";
 import AccoutPage from "../account/Account.page";
 import Detail from "../detailpage/Detail.page";
+import SearchResultPage from "../searchpage/SearchResult.page";
 
 const ContentsRouters = () => {
   return (
@@ -13,6 +14,7 @@ const ContentsRouters = () => {
       <Route path="/detail/:imageId" element={<Detail />} /> {/* "/detail:imageID" */}
       <Route path="/bookmarks" element={<BookmarksPage />} />
       <Route path="/search" element={<SearchPage />} />
+      <Route path="/search-result" element={<SearchResultPage />} />
       <Route path="/account" element={<AccoutPage />} />
       <Route path="/admin" element={<AdminPage />} />
     </Routes>

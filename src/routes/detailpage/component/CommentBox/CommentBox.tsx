@@ -9,8 +9,19 @@ import {
   Label,
   FlexBox,
 } from "./CommentBox.styles";
+import { useMutation } from "@tanstack/react-query";
+import { postComment } from "../../../../utils/axios";
 
-const CommentBox = () => {
+const CommentBox = ({ detailInfo }: any) => {
+  const [text, setText] = useState<string>("");
+
+  const ButtonClick = async () => {
+    setText("");
+    await postComment(detailInfo.pk, text)
+    .then((res)=>console.log(res)).catch((err)=>console.error(err));
+    
+  };
+
   return (
     <Wrapper>
       <Title>
@@ -20,8 +31,12 @@ const CommentBox = () => {
 
       <FlexBox>
         <Label>
-          <Textinput placeholder="|   20자 내로 댓글을 남겨주세요:)" />
-          <InputButton>등록</InputButton>
+          <Textinput
+            value={text}
+            onChange={(e: any) => setText(e.target.value)}
+            placeholder="|   20자 내로 댓글을 남겨주세요:)"
+          />
+          <InputButton onClick={ButtonClick}>등록</InputButton>
         </Label>
 
         <Comment>dummy</Comment>
@@ -30,7 +45,6 @@ const CommentBox = () => {
         <Comment>dummy</Comment>
         <Comment>dummy</Comment>
         <Comment>dummy</Comment>
-        
       </FlexBox>
     </Wrapper>
   );
