@@ -22,7 +22,6 @@ const SelectedBox = styled.div`
 const SelectedTags = () => {
   const navigate = useNavigate();
   const searchTags = useSelector(selectSearchTags);
-  console.log(searchTags);
 
   const handleOnClick = () => {
     navigate("/search-result", {state:searchTags});

@@ -22,6 +22,16 @@
 }
 
 /* heartbeat */
-.active > g[id="Outline/Status/Heartbeat"] > path {
+.active > g[id="Outline/Status/Heartbeat"] > g[id="Icon"] > path {
     fill: var(--main-white)
 }
+
+/* user */
+.active > g[id="Outline/Communication/User"] > g[id="Icon"] > path {
+    fill: var(--main-white)
+}
+
+.active > g[id="isFav"] > g[id="isFav"] > path {
+    fill: var(--main-orange)
+}
+

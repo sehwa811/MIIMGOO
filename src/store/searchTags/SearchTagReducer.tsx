@@ -2,6 +2,7 @@ import { ACTION } from "./SearchTagTypes";
 
 export interface searchtagProps {
   searchTags: string[];
+  isClicked: boolean;
 }
 
 export interface actionType {
@@ -10,7 +11,8 @@ export interface actionType {
 }
 
 const INITIAL_VALUE: searchtagProps = {
-  searchTags: []
+  searchTags: [],
+  isClicked: false
 };
 
 export const SearchTagReducer = (
@@ -22,6 +24,9 @@ export const SearchTagReducer = (
     case ACTION.SEARCH_ADD:
       console.log(payload)
       return { ...state, searchTags: payload };
+    case ACTION.CLICKED:
+      console.log(payload)
+      return { ...state}
     default:
       return state;
   }

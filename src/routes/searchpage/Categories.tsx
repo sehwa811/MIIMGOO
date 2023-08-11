@@ -41,7 +41,7 @@ interface tagProps {
 
 const TagComponent = ({ tag }: tagProps) => {
   return (
-    <SearchTagBox className="tag">
+    <SearchTagBox className="tag" isfav={false}>
       <span>{`#${tag}`}</span>
     </SearchTagBox>
   );

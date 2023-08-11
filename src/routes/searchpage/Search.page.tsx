@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { dispatchToReducer } from "../../store/tags/TagAction";
 import { selectTags } from "../../store/tags/TagSelector";
 import { selectSearchTags } from "../../store/searchTags/SearchTagSelector";
-import { searchTagAdd } from "../../store/searchTags/SearchTagAction";
+import { changeColor, searchTagAdd } from "../../store/searchTags/SearchTagAction";
 
 const CategoriesBox = styled.div`
   display: flex;
@@ -35,9 +35,11 @@ const Categories = styled.div`
   gap: 0.75rem;
 `;
 
-const SearchTagBox = styled(TagBox)`
-  width: fit-content;
-  height: 2.25rem;
+interface Itb {
+  isfav: boolean;
+}
+
+const SearchTagBox = styled.div<Itb>`
   display: flex;
   padding: 0.5rem 0.75rem;
   justify-content: center;
@@ -46,27 +48,36 @@ const SearchTagBox = styled(TagBox)`
   border-radius: 0.75rem;
   border: 1px solid #000;
   background: #fff;
+  background-color: ${(props) =>
+    props.isfav ? "var(--main-orange)" : "white"};
 
   span {
+    color: var(--typho-grey-1);
+    font-family: Spoqa Han Sans Neo;
     font-size: 1rem;
+    font-style: normal;
     font-weight: 500;
+    line-height: normal;
     letter-spacing: -0.02rem;
   }
 `;
 interface tagProps {
   tag: string;
-  onClick(e:any): void; 
+  onClick(e: any): void;
+  clicked: boolean;
 }
 
-const TagComponent = ({ tag, onClick }: tagProps) => {
+const TagComponent = ({ tag, onClick, clicked }: tagProps) => {
   return (
-    <SearchTagBox className="tag" onClick={onClick}>
+    <SearchTagBox className="tag" onClick={onClick} isfav={clicked}>
       <span>{`#${tag}`}</span>
     </SearchTagBox>
   );
 };
 
 export default function SearchPage() {
+  const [clicked, setClicked] = useState<boolean>(false);
+
   const dispatch = useDispatch();
 
   const [circumOptions, setCircumOptions] = useState<string[]>([]);
@@ -79,7 +90,6 @@ export default function SearchPage() {
     refetchOnMount: false,
   });
 
-
   useEffect(() => {
     if (data) {
       setCircumOptions(data["상황"]);
@@ -89,14 +99,14 @@ export default function SearchPage() {
     }
   }, [data]);
 
-
   const searchTags = useSelector(selectSearchTags);
-  
-  const clickTag = (e:any) => {
-    const taginner:string = (e.target.innerText).substr(1);
-    dispatch(searchTagAdd(searchTags, taginner))
-  }
 
+  const clickTag = (e: any) => {
+    const taginner: string = e.target.innerText.substr(1);
+    dispatch(searchTagAdd(searchTags, taginner));
+    console.log(e.currentTarget);
+    //dispatch(changeColor(e.currentTarget));
+  };
 
   return (
     <>
@@ -106,13 +116,18 @@ export default function SearchPage() {
         <div className="search-page">
           <LogoPart />
 
-          <SelectedTags  />
+          <SelectedTags />
 
           <CategoriesBox>
             <Label>상황별 키워드</Label>
             <Categories>
               {circumOptions.map((item: string) => (
-                <TagComponent tag={item} onClick={clickTag} />
+                <TagComponent
+                  key={item}
+                  tag={item}
+                  onClick={clickTag}
+                  clicked={clicked}
+                />
               ))}
             </Categories>
           </CategoriesBox>
@@ -121,7 +136,12 @@ export default function SearchPage() {
             <Label>감정별 키워드</Label>
             <Categories>
               {emotionOptions.map((item: string) => (
-                <TagComponent tag={item} onClick={clickTag} />
+                <TagComponent
+                  key={item}
+                  tag={item}
+                  onClick={clickTag}
+                  clicked={clicked}
+                />
               ))}
             </Categories>
           </CategoriesBox>
@@ -130,7 +150,12 @@ export default function SearchPage() {
             <Label>인물별 키워드</Label>
             <Categories>
               {peopleOptions.map((item: string) => (
-                <TagComponent tag={item} onClick={clickTag} />
+                <TagComponent
+                  key={item}
+                  tag={item}
+                  onClick={clickTag}
+                  clicked={clicked}
+                />
               ))}
             </Categories>
           </CategoriesBox>
@@ -139,7 +164,12 @@ export default function SearchPage() {
             <Label>기타 키워드</Label>
             <Categories>
               {othersOptions.map((item: string) => (
-                <TagComponent tag={item} onClick={clickTag} />
+                <TagComponent
+                  key={item}
+                  tag={item}
+                  onClick={clickTag}
+                  clicked={clicked}
+                />
               ))}
             </Categories>
           </CategoriesBox>

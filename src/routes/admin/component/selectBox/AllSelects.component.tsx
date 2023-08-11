@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import Select from "react-select";
 
 import CustomSelectBox from "./SelectBox.component";
 import { selectTags } from "../../../../store/tags/TagSelector";
@@ -21,9 +22,12 @@ const AllSelects = () => {
       setEmotionOptions(data["감정"]);
       setPeopleOptions(data["인물"]);
       setOthersOptions(data["기타"]);
+      console.log(circumOptions)
     }
   }, [data]);
   const { circum, people, emotions, others } = useSelector(selectTags);
+
+  
   return (
     <>
       {isLoading ? (
@@ -54,6 +58,14 @@ const AllSelects = () => {
             categoryName="others"
             placeholder="기타"
           />
+          {/* <Select
+            defaultValue="상황별"
+            isMulti
+            name="colors"
+            options={circumOptions}
+            className="basic-multi-select"
+            classNamePrefix="select"
+          /> */}
         </>
       )}
     </>

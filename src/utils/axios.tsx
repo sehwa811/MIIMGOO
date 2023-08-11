@@ -116,12 +116,26 @@ export const getSearchResult = (state: any) =>
 export const postComment = (id: number, text: string) =>
   instance
     .post(
-      `http://backend.miimgoo.site/api/memes/${id}/comment`,
+      `memes/${id}/comment`,
       { description: text },
       {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
       }
     )
     .then((res) => res.data);
 //id, text 잘 넘어가는데 CORS 뜸
 //tex
+
+export const postFav = (id: number) =>
+  instance
+    .post(`favorites/meme/${id}/`, {}, {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((res) => res.data);
+
+
+export const getFavImages = () => instance.get("favorites/me/").then((res)=>res.data);

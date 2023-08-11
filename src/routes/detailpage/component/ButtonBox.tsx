@@ -1,10 +1,13 @@
-import html2canvas from 'html2canvas';
+import html2canvas from "html2canvas";
 import { styled } from "styled-components";
 
 import Button from "../../../components/basics/button.component";
 import { ReactComponent as Heart } from "../../../svg/Heartbeat.white.svg";
 import { ReactComponent as Download } from "../../../svg/Download_light.svg";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
+import { postFav } from "../../../utils/axios";
+import Icon from "../../../components/icon/IconFactory.component";
+import { useMutation } from "@tanstack/react-query";
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,7 +33,9 @@ const InsideContents = styled.div`
 `;
 
 const ButtonBox = ({ detailInfo }: any) => {
-  const url:string = detailInfo.meme_url
+  const url: string = detailInfo.meme_url;
+  const isFav: boolean = detailInfo.is_favorite;
+  const id: number = detailInfo.pk;
 
   //CORS block
   const downloadImg = async () => {
@@ -40,9 +45,9 @@ const ButtonBox = ({ detailInfo }: any) => {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-  }
+  };
 
-  function toDataURL(url:string) {
+  function toDataURL(url: string) {
     return fetch(url)
       .then((response) => {
         return response.blob();
@@ -56,11 +61,17 @@ const ButtonBox = ({ detailInfo }: any) => {
     saveAs(detailInfo.meme_url, "filename")
   } */
 
+  const handleIsFav = async () => {
+    postFav(id)
+      .then((res) => console.log("Fav changed"))
+      .catch((err) => console.error);
+  };
+
   return (
     <>
       {detailInfo ? (
         <Wrapper className="button-box">
-          <Button 
+          <Button
             onClick={downloadImg}
             color="white"
             background="#0075FF"
@@ -69,13 +80,14 @@ const ButtonBox = ({ detailInfo }: any) => {
             shadow="2px 2px 2px 0px rgba(0, 0, 0, 0.25)"
             borderradius="0.25rem"
           >
-            <InsideContents className="button-inside" >
-                <ButtonLabel>다운로드</ButtonLabel>
+            <InsideContents className="button-inside">
+              <ButtonLabel>다운로드</ButtonLabel>
               <Download />
             </InsideContents>
           </Button>
 
           <Button
+            onClick={handleIsFav}
             border="1px solid white;"
             color="white"
             background="transparent"
@@ -85,7 +97,7 @@ const ButtonBox = ({ detailInfo }: any) => {
           >
             <InsideContents className="button-inside">
               <ButtonLabel>즐겨찾기</ButtonLabel>
-              <Heart />
+              <Icon icon="favorite" isActive={isFav} />
             </InsideContents>
           </Button>
         </Wrapper>

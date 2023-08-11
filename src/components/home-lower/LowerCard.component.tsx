@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { FavBox } from "../home-upper/UpperCard.component";
+import { ReactComponent as Favs } from "../home-upper/Heartbeat.white.svg";
 
 const CardBox = styled.div`
   display: flex;
@@ -7,9 +9,8 @@ const CardBox = styled.div`
   width: 100%;
   height: 15.25rem;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   padding: 0.5rem;
-
   border-radius: 0.5rem;
   border: 1px solid #000;
   background: linear-gradient(180deg, #0075ff 0%, rgba(0, 117, 255, 0.2) 100%);
@@ -25,6 +26,7 @@ const ImageLabel = styled.div`
   align-items: center;
   gap: 0.625rem;
 
+  color: var(--main-blue);
   border: 1px solid var(--typho-black-1);
   background: #fff;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
@@ -47,6 +49,10 @@ const ImageBox = styled.div`
   }
 `;
 
+const LowerFavBox = styled(FavBox)`
+  position: relative;
+`;
+
 interface lowercardProps {
   image: any;
 }
@@ -65,8 +71,13 @@ const LowerCardComponent = ({ image = null }: lowercardProps) => {
       {image ? (
         <CardBox onClick={goToDetail}>
           <ImageLabel className="image-label">{image.title}</ImageLabel>
-          <ImageBox className="image-display"><img src={image.meme_url} className="cover" /></ImageBox>
-          <div className="likes">{image.favorites}</div>
+          <ImageBox className="image-display">
+            <img src={image.meme_url} className="cover" />
+          </ImageBox>
+          <LowerFavBox className="likes">
+            <Favs />
+            <span>{image.favorites}</span>
+          </LowerFavBox>
         </CardBox>
       ) : (
         <div></div>

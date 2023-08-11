@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Wrapper,
@@ -11,43 +11,52 @@ import {
 } from "./CommentBox.styles";
 import { useMutation } from "@tanstack/react-query";
 import { postComment } from "../../../../utils/axios";
+import TextInput from "./TextInput";
+import TextInputComponent from "./TextInput";
 
-const CommentBox = ({ detailInfo }: any) => {
-  const [text, setText] = useState<string>("");
-
-  const ButtonClick = async () => {
-    setText("");
-    await postComment(detailInfo.pk, text)
-    .then((res)=>console.log(res)).catch((err)=>console.error(err));
-    
-  };
-
+const CommentComponent = (innerText: any) => {
   return (
-    <Wrapper>
-      <Title>
-        <span>댓글</span>
-        <span className="numbers">N</span>
-      </Title>
-
-      <FlexBox>
-        <Label>
-          <Textinput
-            value={text}
-            onChange={(e: any) => setText(e.target.value)}
-            placeholder="|   20자 내로 댓글을 남겨주세요:)"
-          />
-          <InputButton onClick={ButtonClick}>등록</InputButton>
-        </Label>
-
-        <Comment>dummy</Comment>
-        <Comment>dummy</Comment>
-        <Comment>dummy</Comment>
-        <Comment>dummy</Comment>
-        <Comment>dummy</Comment>
-        <Comment>dummy</Comment>
-      </FlexBox>
-    </Wrapper>
+    <Comment>
+     {innerText}
+    </Comment>
   );
 };
 
-export default CommentBox;
+const CommentBox = ({ id, comments }: any) => {
+
+  const commentArray: string[] = [];
+  const arrayReversed = comments.reverse();
+  arrayReversed.forEach((item: any) => commentArray.push(item.description));
+  console.log(commentArray);
+
+  const components = [];
+
+  for (let i = 0; i < commentArray.length; i++) {
+    components.push(
+    <Comment>{commentArray[i]}</Comment>
+    )
+  }
+  
+  return (
+    <>
+      {id ? (
+        <Wrapper>
+          <Title>
+            <span>댓글</span>
+            <span className="numbers">{commentArray.length}</span>
+          </Title>
+
+          <FlexBox>
+              <TextInputComponent id={id} />
+           
+                {components}   
+          </FlexBox>
+        </Wrapper>
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
+
+export default React.memo(CommentBox);

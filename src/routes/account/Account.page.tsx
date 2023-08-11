@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import LogoPart from "../detailpage/component/LogoPart";
+import LabelComponent from "../../components/basics/label-box/Label.component";
 
 export default function AccoutPage() {
     const navigate = useNavigate();
@@ -8,7 +10,8 @@ export default function AccoutPage() {
   };
     return (
         <div>
-            <h1>AccoutPage</h1>
+            <LogoPart />
+            <LabelComponent labelText="계정" />
             <button onClick={handleOnClick}>Admin</button>
         </div>
     )

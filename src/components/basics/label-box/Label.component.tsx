@@ -1,10 +1,12 @@
 
-
 import styled from "styled-components";
+
+import { ReactComponent as Folder } from "../../../svg/Folder.svg";
 
 
 const Wrapper = styled.div`
   display: flex;
+  justify-content:space-between;
   width: 100%;
   padding: 0.5rem;
   align-items: center;
@@ -34,6 +36,7 @@ const LabelComponent = ({labelText}:labelComponentProps) => {
     <Wrapper>
       <span>{labelText}</span>
       {/* icon */}
+      <Folder />
     </Wrapper>
   );
 };

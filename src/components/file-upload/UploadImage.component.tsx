@@ -24,11 +24,13 @@ const UploadImage = () => {
   const dispatch = useDispatch();
 
   const tags = useSelector(selectTags);
+  console.log(tags)
   const tagList: string[] = Object.values(tags);
   const newList = tagList.filter((item) => !(item === null));
 
   const imageTitle = useSelector(selectImgTitle);
   const image = useSelector(selectImg);
+
 
   const onImgChange = (e: any) => {
     const selectedImage = e.target.files[0];
@@ -37,7 +39,7 @@ const UploadImage = () => {
   };
 
   const sendToServer = () => {
-    console.log("imgaeTitle", imageTitle);
+    console.log("imageTitle", imageTitle);
     uploadToS3(imageTitle, image, inputText, newList);
     setInputText("");
   };

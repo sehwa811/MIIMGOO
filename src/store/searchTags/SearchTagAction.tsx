@@ -10,3 +10,7 @@ export const searchTagAdd = (searchTags: string[], tag: string) => {
   const newSearchTags:any = addTagTosearchTags(searchTags, tag);
   return createAction(ACTION.SEARCH_ADD, newSearchTags);
 };
+
+
+export const changeColor = (payload:actionType) => createAction(ACTION.SEARCH_ADD, payload);
+

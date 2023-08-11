@@ -13,7 +13,11 @@ export default function Detail() {
 
   const { state } = useLocation();
 
-  const [detailInfo, setDetailInfo] = useState([]);
+  const [detailInfo, setDetailInfo] = useState<any>([]);
+
+  const [comments, setComments] = useState<any>([]);
+  const [id, setId] = useState<number>(0);
+
 
   const { data, isError, isLoading } = useQuery(
     ["imageDetail", state],
@@ -29,6 +33,9 @@ export default function Detail() {
     if (data) {
       console.log(data);
       setDetailInfo(data);
+      console.log(data.comment);
+      setComments(data.comment);
+      setId(data.pk);
     }
   }, [data]);
 
@@ -39,7 +46,7 @@ export default function Detail() {
           <LogoPart />
           <ImageInfo detailInfo={detailInfo} />
           <ButtonBox detailInfo={detailInfo} />
-          <CommentBox detailInfo={detailInfo} />
+          <CommentBox id={id} comments={comments} />
         </div>
       ) : (
         <div></div>

@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const TagBox = styled.div`
+
+interface Itb {
+  isfav:boolean;
+}
+
+export const TagBox = styled.div<Itb>`
   width: fit-content;
   display: flex;
   padding: 0.5rem 0.75rem;
@@ -9,10 +14,9 @@ export const TagBox = styled.div`
   gap: 0.625rem;
   border-radius: 0.5rem;
   border: 1px solid var(--typho-black-1);
-  background: #fff;
+  background-color: var(--main-white);
 
   span {
-    
     color: var(--typho-black-1, #111);
     font-family: Spoqa Han Sans Neo;
     font-size: 0.75rem;
@@ -29,7 +33,7 @@ interface tagProps {
 
 const TagComponent = ({ tag }: tagProps) => {
   return (
-    <TagBox className="tag">
+    <TagBox className="tag" isfav={false}>
       <span>{`#${tag}`}</span>
     </TagBox>
   );
