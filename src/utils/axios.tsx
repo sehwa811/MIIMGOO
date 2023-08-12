@@ -18,7 +18,7 @@ export const kakaoLogin = (code: string) =>
   instance
     .post(
       "users/kakao/",
-      { code: "miimgoo" },
+      { code: code },
       {
         headers: {
           "X-CSRFToken": Cookie.get("csrftoken") || "",

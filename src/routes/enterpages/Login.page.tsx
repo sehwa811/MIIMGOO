@@ -23,6 +23,7 @@ export default function LoginPage() {
       <LogoBox>
         <img src={Logo} />
       </LogoBox>
+
       <ButtonBox>
         <Button
           onClick={getKakaoUrl}
@@ -35,10 +36,12 @@ export default function LoginPage() {
             <ButtonLabel>카카오 로그인</ButtonLabel>
           </Label>
         </Button>
+        
         <Button onClick={gotoHome}>
           <ButtonLabel>비회원으로 둘러보기</ButtonLabel>
         </Button>
       </ButtonBox>
+
     </Background>
   );
 }
