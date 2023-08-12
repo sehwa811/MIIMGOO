@@ -12,19 +12,19 @@ const SelectedTagsBox = styled.div`
   height: fit-content;
   display: flex;
   gap: 0.75rem;
-`
+`;
 
 const SearchResultPage = () => {
   const { state } = useLocation();
 
   const [resultData, setResultData] = useState([]);
 
-  //console.log(state);
+  console.log(state);
   const SearchParams: any = {
-    tags: ["hhh"],
+    tags: state,
   };
   const params = new URLSearchParams(SearchParams);
-  const { data, isError, isLoading } = useQuery(["searchresult", state], () =>
+  const { data, isError, isLoading } = useQuery(["searchresult", params], () =>
     getSearchResult(state)
   );
 
@@ -47,15 +47,10 @@ const SearchResultPage = () => {
   return (
     <>
       <LogoPart />
-      <SelectedTagsBox>{["짱구", "행복"]}</SelectedTagsBox>
+      <SelectedTagsBox>{state}</SelectedTagsBox>
 
       {resultData ? (
-        resultData.map((item) => (
-          <CardBox>
-            <UpperCardComponent image={item} />
-            <UpperCardComponent image={item} />
-          </CardBox>
-        ))
+        resultData.map((item) => <UpperCardComponent image={item} />)
       ) : (
         <>데이터를 불러오고 있습니다...</>
       )}

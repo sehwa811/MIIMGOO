@@ -2,7 +2,10 @@ import { useNavigate } from "react-router-dom";
 import LogoPart from "../detailpage/component/LogoPart";
 import LabelComponent from "../../components/basics/label-box/Label.component";
 
+
+
 import styled from "styled-components";
+import { useState } from "react";
 
 const AdminLogin = styled.div`
   position: relative;
@@ -23,6 +26,9 @@ const AdminLogin = styled.div`
 
 export default function AccoutPage() {
   const navigate = useNavigate();
+  const [show, setShow] = useState<boolean>(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleOnClick = () => {
     navigate("/admin");
@@ -34,6 +40,8 @@ export default function AccoutPage() {
       <AdminLogin onClick={handleOnClick}>
         <span>밈구의 관리자로 로그인하시겠습니까?</span>
       </AdminLogin>
+
+
     </div>
   );
 }

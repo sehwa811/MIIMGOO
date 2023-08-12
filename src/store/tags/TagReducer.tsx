@@ -2,9 +2,9 @@ import { ACTION } from "./TagTypes";
 
 export interface selectedContext {
   circum: string[] | null;
-  emotions: string[] | null;
+  emotion: string[] | null;
   people: string[] | null;
-  others: string[] | null;
+  other: string[] | null;
 }
 
 export interface actionType {
@@ -15,9 +15,9 @@ export interface actionType {
 
 const INITIAL_VALUE: selectedContext = {
   circum: [],
-  emotions: [],
+  emotion: [],
   people: [],
-  others: [],
+  other: [],
 };
 
 export const TagReducer = (
@@ -31,9 +31,9 @@ export const TagReducer = (
     case ACTION.PEOPLE_ADD:
       return { ...state, people: payload };
     case ACTION.EMOTION_ADD:
-      return { ...state, emotions: payload };
+      return { ...state, emotion: payload };
     case ACTION.OTHERS_ADD:
-      return { ...state, others: payload };
+      return { ...state, other: payload };
     default:
       return state;
   }

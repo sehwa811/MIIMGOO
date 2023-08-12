@@ -26,6 +26,8 @@ export const FlexBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  position: relative;
+  top: 1.25rem;
 `
 
 export const Label = styled.div`

@@ -108,10 +108,12 @@ export const postTagsList = (tagList: ITag[]) =>
     })
     .then((res) => res.data);
 
+    
 export const getSearchResult = (state: any) =>
   instance
-    .get(`memes/search/tag/?tags=["행복", "짱구"]`)
+    .get(`memes/search/tag/?tags=${state}`)
     .then((res) => res.data);
+
 
 export const postComment = (id: number, text: string) =>
   instance

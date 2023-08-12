@@ -31,7 +31,7 @@ const SelectedTags = () => {
   const dispatch = useDispatch();
 
   const handleOnClick = () => {
-    navigate("/search-result", {state:searchTags});
+    navigate("/search-result", { state: searchTags });
     dispatch(clearSearchTag());
   };
 

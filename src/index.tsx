@@ -12,8 +12,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
-
-
 import { store, persistor } from "./store/store";
 
 import styled from "styled-components";

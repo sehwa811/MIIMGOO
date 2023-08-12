@@ -19,8 +19,8 @@ const addTagToPeople = (people: string[], tag: string) => {
   return [...people, tag];
 };
 
-const addTagToOthers = (others: string[], tag: string) => {
-  return [...others, tag];
+const addTagToOthers = (other: string[], tag: string) => {
+  return [...other, tag];
 };
 
 
@@ -32,8 +32,8 @@ export const dispatchPeople = (people: string[], tag: string) =>
 {const newSearchTags: any = addTagToPeople(people, tag);
   return createAction(ACTION.PEOPLE_ADD, newSearchTags);}
 
-export const dispatchOthers = (others: string[], tag: string) =>
-{const newSearchTags: any = addTagToOthers(others, tag);
+export const dispatchOthers = (other: string[], tag: string) =>
+{const newSearchTags: any = addTagToOthers(other, tag);
   return createAction(ACTION.OTHERS_ADD, newSearchTags);}
 
   

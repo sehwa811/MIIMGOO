@@ -5,7 +5,7 @@ export default function AdminPage() {
     return (
         <div>
             <LogoPart />
-            <h1>관리자 페이지</h1><br></br>
+            <br></br>
             <UploadImage />
         </div>
     )

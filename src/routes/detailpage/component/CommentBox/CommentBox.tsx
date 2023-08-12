@@ -14,13 +14,6 @@ import { postComment } from "../../../../utils/axios";
 import TextInput from "./TextInput";
 import TextInputComponent from "./TextInput";
 
-const CommentComponent = (innerText: any) => {
-  return (
-    <Comment>
-     {innerText}
-    </Comment>
-  );
-};
 
 const CommentBox = ({ id, comments }: any) => {
 
@@ -45,10 +38,8 @@ const CommentBox = ({ id, comments }: any) => {
             <span>댓글</span>
             <span className="numbers">{commentArray.length}</span>
           </Title>
-
           <FlexBox>
               <TextInputComponent id={id} />
-           
                 {components}   
           </FlexBox>
         </Wrapper>
