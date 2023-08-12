@@ -32,6 +32,7 @@ export const FlexBox = styled.div`
 
 export const Label = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export const Textinput = styled.input`

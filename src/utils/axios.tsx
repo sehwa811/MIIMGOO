@@ -50,7 +50,7 @@ export const uploadToS3 = async (
         tags: tags,
       },
 
-      { headers: { "X-CSRFToken": Cookie.get("csrftoken") || "", } }
+      { headers: { "X-CSRFToken": Cookie.get("csrftoken") || "" } }
     );
 
   //1
@@ -111,8 +111,19 @@ export const postTagsList = (tagList: ITag[]) =>
     })
     .then((res) => res.data);
 
-export const getSearchResult = (state: any) =>
-  instance.get(`memes/search/tag/?tags=${state}`).then((res) => res.data);
+export const getSearchResult = (state: any[]) => {
+  console.log(state);
+  const encodedTags = Object.entries(state)
+    .map(
+      ([key, tags]: any) =>
+        `${key}=${tags.map((tag: any) => encodeURIComponent(tag)).join(",")}`
+    )
+    .join("&");
+
+  const url = `memes/search/tag/?${encodedTags}`;
+  console.log("URL", url);
+  return instance.get(url).then((res) => res.data);
+};
 
 export const postComment = (id: number, text: string) =>
   instance

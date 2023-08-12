@@ -31,7 +31,6 @@ const SearchResultPage = () => {
   const results: any = [];
   useEffect(() => {
     if (data) {
-      console.log(data)
       /* const values = Object.values(data);
       console.log(values);
       for (const i of values) {

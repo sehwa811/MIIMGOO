@@ -50,4 +50,4 @@ const CommentBox = ({ id, comments }: any) => {
   );
 };
 
-export default React.memo(CommentBox);
+export default CommentBox;

@@ -22,7 +22,7 @@ const TextInputComponent = ({ id }: any) => {
     
 
   return (
-    <Label>
+    <Label className="text-input">
       <Textinput
         value={text}
         onChange={(e: any) => setText(e.target.value)}
