@@ -5,7 +5,7 @@ import Button from "../../../components/basics/button.component";
 import { ReactComponent as Heart } from "../../../svg/Heartbeat.white.svg";
 import { ReactComponent as Download } from "../../../svg/Download_light.svg";
 import { saveAs } from "file-saver";
-import { postFav } from "../../../utils/axios";
+import { getBlob, postFav } from "../../../utils/axios";
 import Icon from "../../../components/icon/IconFactory.component";
 import { useMutation } from "@tanstack/react-query";
 
@@ -38,29 +38,32 @@ const ButtonBox = ({ detailInfo }: any) => {
   const isFav: boolean = detailInfo.is_favorite;
   const id: number = detailInfo.pk;
 
-  //CORS block
+  const blobMutate = useMutation(getBlob, {
+    onSuccess: ({ data, type, filename }) => {
+      if (data && type && filename) {
+        // base64 문자열을 바이트 배열로 디코딩
+        const byteCharacters = atob(data);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+
+        const blob = new Blob([byteArray], { type: type });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    },
+  });
+
   const downloadImg = async () => {
-    const a = document.createElement("a");
-    a.href = await toDataURL(url);
-    a.download = "test";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    blobMutate.mutate(url);
   };
-
-  function toDataURL(url: string) {
-    return fetch(url)
-      .then((response) => {
-        return response.blob();
-      })
-      .then((blob) => {
-        return URL.createObjectURL(blob);
-      });
-  }
-
-  /* const downloadImg = () => {
-    saveAs(detailInfo.meme_url, "filename")
-  } */
 
   const handleIsFav = async () => {
     postFav(id)

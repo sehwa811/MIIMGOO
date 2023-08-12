@@ -155,3 +155,16 @@ export const postFav = (id: number) =>
 
 export const getFavImages = () =>
   instance.get("favorites/me/").then((res) => res.data);
+
+export const getBlob = (url: any) =>
+  instance
+    .post(
+      "memes/download/",
+      { url: url },
+      {
+        headers: {
+          "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+      }
+    )
+    .then((res) => res.data);
