@@ -74,6 +74,7 @@ const ButtonBox = ({ detailInfo }: any) => {
   const favortites = useMutation(postFav, {
     onSuccess: () => {
       queryClient.resetQueries(["imageDetail", id]);
+      queryClient.resetQueries(["favImages"]);
     },
   });
 

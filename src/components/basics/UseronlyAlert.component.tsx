@@ -1,5 +1,4 @@
-import MiimgooEye from "./loading.gif";
-
+import Crying from "./404.gif";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -33,15 +32,15 @@ const Wrapper = styled.div`
   }
 `;
 
-const LoginLoadingPage = () => {
+const UserOnlyAlert = () => {
   return (
     <Container>
       <Wrapper>
-        <img src={MiimgooEye} />
-        <span>로그인 중입니다...👀</span>
+        <img src={Crying} />
+        <span>로그인 후 이용해주세요.</span>
       </Wrapper>
     </Container>
   );
 };
 
-export default LoginLoadingPage;
+export default UserOnlyAlert;

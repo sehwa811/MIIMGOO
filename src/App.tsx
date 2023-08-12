@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/social/kakao" element={<KakaoLoginPage />} />
         <Route path="/*" element={<Others />} />
-      </Routes>
+      </Routes> 
     </BrowserRouter>
   );
 }

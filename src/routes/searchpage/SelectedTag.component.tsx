@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as Search } from "./Search.svg";
 import { ReactComponent as Close } from "./Close.svg";
-import { clearSearchTag } from "../../store/searchTags/SearchTagAction";
+import { clearSearchTag, searchTagRemove } from "../../store/searchTags/SearchTagAction";
 import { useEffect } from "react";
 
 const SelectedBox = styled.div`
@@ -67,34 +67,25 @@ const SelectedTagBox = styled.div`
   }
 `;
 
-interface props{
-  tag:any;
-  onClick():void;
-}
-
-const IconComponent = ({tag, onClick}:props) => {
-  console.log(tag)
-  return (
-    <Close onClick={onClick}  />
-  )
-}
-
 const SelectedTags = () => {
+  const IconComponent = (tag: any) => {
+    return <Close onClick={()=>removeTag(tag)} />;
+  };
+
   const navigate = useNavigate();
   const searchTags = useSelector(selectSearchTags);
   const dispatch = useDispatch();
 
-  const removeTag = (e: any) => 
- {  console.log()}
-
-
+  const removeTag = ({tag}: any) => {
+    dispatch(searchTagRemove(searchTags, tag));
+  };
 
   const selectedArray = [];
   for (let i = 0; i < searchTags?.length; i++) {
     selectedArray.push(
       <SelectedTagBox>
         <span>{`#${searchTags[i]}`}</span>
-        <IconComponent tag={searchTags[i]} onClick={removeTag} />
+        <IconComponent tag={searchTags[i]} />
       </SelectedTagBox>
     );
   }
@@ -105,7 +96,6 @@ const SelectedTags = () => {
       dispatch(clearSearchTag());
     }
   };
-
 
   return (
     <SelectedBox>

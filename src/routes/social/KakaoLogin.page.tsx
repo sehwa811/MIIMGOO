@@ -15,7 +15,7 @@ export default function KakaoLoginPage() {
     },
     onSuccess: () => {
       console.log("success");
-      navigate("/home");
+      setTimeout(()=>navigate("/home"), 2000);
     },
     onError: (status:any) => {
       if (status.response.status === 403) {
