@@ -33,6 +33,9 @@ const TitleSpan = styled.span`
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.03rem;
+
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 const ImageDisplay = styled.div`
@@ -53,15 +56,15 @@ const ImageDisplay = styled.div`
 const TagList = styled.div``;
 
 //props: imageFIle, imageTitle, tag list
-const ImageInfo = ({detailInfo}: any) => {
+const ImageInfo = ({ detailInfo }: any) => {
   const tagList = detailInfo.tags;
-  console.log(tagList)
-  const tagValues:string[] = [];
+  console.log(tagList);
+  const tagValues: string[] = [];
 
   for (const item in tagList) {
-    tagValues.push(tagList[item].name)
+    tagValues.push(tagList[item].name);
   }
-console.log(tagValues)
+  console.log(tagValues);
 
   return (
     <>
@@ -72,10 +75,11 @@ console.log(tagValues)
             <Folder />
           </ImageTitleBox>
 
-          <ImageDisplay><img id={detailInfo.meme_url} src={detailInfo.meme_url} /></ImageDisplay>
+          <ImageDisplay>
+            <img id={detailInfo.meme_url} src={detailInfo.meme_url} />
+          </ImageDisplay>
 
           <TagListComponent tags={tagValues} />
-
         </ImageInfoWrapper>
       ) : (
         <div></div>

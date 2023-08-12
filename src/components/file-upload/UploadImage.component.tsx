@@ -40,7 +40,7 @@ const UploadImage = () => {
 
   const sendToServer = () => {
     console.log("imageTitle", imageTitle);
-    uploadToS3(imageTitle, image, inputText, newList);
+    uploadToS3(imageTitle, image, inputText, tags);
     setInputText("");
   };
 
@@ -62,6 +62,7 @@ const UploadImage = () => {
       /><br></br>
       <AllSelects />
       <button onClick={sendToServer}>등록하기</button>
+
       <TagRegistration />
     </>
   );

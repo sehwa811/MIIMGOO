@@ -14,3 +14,5 @@ export const searchTagAdd = (searchTags: string[], tag: string) => {
 
 export const changeColor = (payload:actionType) => createAction(ACTION.SEARCH_ADD, payload);
 
+export const clearSearchTag = () => createAction(ACTION.CLEAR);
+

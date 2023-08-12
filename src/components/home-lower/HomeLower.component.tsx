@@ -14,6 +14,7 @@ const LowerBody = styled.div`
   gap: 0.75rem;
   position: relative;
   top: 1.75rem;
+  padding-bottom: 1rem;
 `;
 
 const HomeLowerComponent = () => {

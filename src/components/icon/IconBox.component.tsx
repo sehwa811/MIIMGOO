@@ -2,6 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 
 import styled from "styled-components";
 import Icon, { IconType } from "./IconFactory.component";
+import { useRef } from "react";
 
 interface IconBoxProps {
   iconName: IconType;
@@ -45,14 +46,15 @@ const Text = styled.span<textProp>`
 const IconBox = ({ iconName, text, route }: IconBoxProps) => {
   const location = useLocation();
   const { pathname } = location;
+  const aTag = useRef();
 
   return (
-    <StyledDiv>
-      <NavLink to={route}>
+    <NavLink to={route} style={{ textDecoration: 'none' }}>
+      <StyledDiv className="icon-box">
         <Icon icon={iconName} isActive={route === pathname} />
-      </NavLink>
-      <Text active={route === pathname ? "active" : "inactive"}>{text}</Text>
-    </StyledDiv>
+        <Text active={route === pathname ? "active" : "inactive"}>{text}</Text>
+      </StyledDiv>
+    </NavLink>
   );
 };
 

@@ -7,7 +7,7 @@ const BigBox = styled.div`
   padding-top: 3.75rem;
   padding-right: 1.25rem;
   padding-left: 1.25rem;
-  
+  padding-bottom: 6rem;
 `
 
 const Others = () => {

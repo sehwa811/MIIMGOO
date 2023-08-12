@@ -11,11 +11,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { dispatchToReducer } from "../../store/tags/TagAction";
 import { selectTags } from "../../store/tags/TagSelector";
 import { selectSearchTags } from "../../store/searchTags/SearchTagSelector";
-import { changeColor, searchTagAdd } from "../../store/searchTags/SearchTagAction";
+import {
+  changeColor,
+  searchTagAdd,
+} from "../../store/searchTags/SearchTagAction";
+
+const AllBox = styled.div`
+  display:flex;
+  flex-direction:column;
+  gap: 1rem;
+  position: relative;
+  top: 2rem;
+  padding-bottom: 2rem;
+`
 
 const CategoriesBox = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 `;
 
 const Label = styled.div`
@@ -41,12 +54,13 @@ interface Itb {
 
 const SearchTagBox = styled.div<Itb>`
   display: flex;
+  height: 2.25rem;
   padding: 0.5rem 0.75rem;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
   border-radius: 0.75rem;
-  border: 1px solid #000;
+  border: 1.5px solid #000;
   background: #fff;
   background-color: ${(props) =>
     props.isfav ? "var(--main-orange)" : "white"};
@@ -118,6 +132,7 @@ export default function SearchPage() {
 
           <SelectedTags />
 
+          <AllBox>
           <CategoriesBox>
             <Label>상황별 키워드</Label>
             <Categories>
@@ -173,6 +188,7 @@ export default function SearchPage() {
               ))}
             </Categories>
           </CategoriesBox>
+          </AllBox>
         </div>
       )}
     </>

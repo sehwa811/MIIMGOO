@@ -45,6 +45,7 @@ const TagRegistration: React.FC = () => {
 
   return (
     <div>
+      <br></br>
       <h3>ADD NEW TAGS</h3>
       <form onSubmit={handleSubmit}>
         <div>

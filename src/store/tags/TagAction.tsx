@@ -46,12 +46,3 @@ export const dispatchToReducer = (payload: actionType) =>
 
 
 
-  const addTagToArray = (category: string[], tag: string) => {
-    return [...category, tag];
-  };
-  
-  export const dispatchTag = (category: string[], tag: string) => {
-    const newTagArray: any = addTagToArray(category, tag);
-    return createAction(ACTION.ADD, newTagArray);
-  };
-  

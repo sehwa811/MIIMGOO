@@ -3,9 +3,13 @@ import styled from "styled-components";
 
 import { ReactComponent as Folder } from "../../../svg/Folder.svg";
 
+interface topPropType {
+top?: string;
+}
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<topPropType>`
   display: flex;
+  height: 2.2526rem;
   justify-content:space-between;
   width: 100%;
   padding: 0.5rem;
@@ -14,6 +18,9 @@ const Wrapper = styled.div`
 
   border-radius: 0.25rem;
   border: 1px solid var(--main-white, #fff);
+
+  position: relative;
+  top: ${(props) => props.top || "0.6rem" };
 
   span {
     color: var(--main-white, #fff);
@@ -29,11 +36,12 @@ const Wrapper = styled.div`
 
 interface labelComponentProps {
   labelText: string;
+  top?: string;
 }
 
-const LabelComponent = ({labelText}:labelComponentProps) => {
+const LabelComponent = ({labelText, top}:labelComponentProps) => {
   return (
-    <Wrapper>
+    <Wrapper top={top}>
       <span>{labelText}</span>
       {/* icon */}
       <Folder />

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const CardBox = styled.div`
@@ -20,6 +21,13 @@ const ImageBox = styled.div`
   height: 7.5rem;
   border: 1px solid var(--typho-black-1);
   border-radius: 50%;
+
+  img {
+    width: 7.4rem;
+    height: 7.4rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 `;
 
 const TitleBox = styled.div`
@@ -33,13 +41,42 @@ const TitleBox = styled.div`
   border: 1px solid var(--typho-black-1);
   background: var(--main-orange);
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    color: var(--main-typho-black-1);
+
+    font-family: Spoqa Han Sans Neo;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.015rem;
+  }
 `;
 
-const BookmarkImageCard = () => {
+interface imagecardPrps {
+  pk: number;
+  url: string;
+  title: string;
+}
+
+const BookmarkImageCard = ({ pk, url, title }: imagecardPrps) => {
+  const navigate = useNavigate();
+
+  const goToDetail = () => {
+    navigate(`/detail/${pk}`, { state: pk });
+  };
+
   return (
-    <CardBox>
-      <ImageBox />
-      <TitleBox />
+    <CardBox onClick={goToDetail}>
+      <ImageBox>
+        <img src={url} />
+      </ImageBox>
+      <TitleBox>
+        <span>{title}</span>
+      </TitleBox>
     </CardBox>
   );
 };

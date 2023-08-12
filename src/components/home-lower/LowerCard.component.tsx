@@ -62,8 +62,7 @@ const LowerCardComponent = ({ image = null }: lowercardProps) => {
 
   //수정
   const goToDetail = () => {
-    //navigate(`/detail/${imageID}`)
-    navigate("/detail");
+    navigate(`/detail/${image.pk}`, { state: image.pk });
   };
 
   return (

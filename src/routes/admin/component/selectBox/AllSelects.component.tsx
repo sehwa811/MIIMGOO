@@ -8,7 +8,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getTagsList } from "../../../../utils/axios";
 import { SelectBox } from "./SelectBox.styles";
-import { dispatchCircum, dispatchEmotion, dispatchOthers, dispatchPeople, dispatchTag, dispatchToReducer } from "../../../../store/tags/TagAction";
+import { dispatchCircum, dispatchEmotion, dispatchOthers, dispatchPeople } from "../../../../store/tags/TagAction";
 
 const AllSelects = () => {
   const [circumOptions, setCircumOptions] = useState([]);
@@ -36,7 +36,6 @@ const AllSelects = () => {
   const emotion = useSelector(selectEmotion);
   const people = useSelector(selectPeople);
   const others = useSelector(selectOthers);
-
 
 
   const handleOnClick = (e:any) => {

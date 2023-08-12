@@ -20,7 +20,10 @@ const UpperBody = styled.div`
 
 export const CardBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  position: relative;
+  top: 1rem;
+  gap: 1.25rem 0.5rem;
+  flex-wrap: wrap;
 `;
 
 const HomeUpperComponent = () => {
@@ -47,8 +50,6 @@ const HomeUpperComponent = () => {
           <CardBox>
             <UpperCardComponent image={rawData[0]} />
             <UpperCardComponent image={rawData[1]} />
-          </CardBox>
-          <CardBox>
             <UpperCardComponent image={rawData[2]} />
             <UpperCardComponent image={rawData[3]} />
           </CardBox>
