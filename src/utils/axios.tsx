@@ -170,3 +170,16 @@ export const deleteUser = () =>
       },
     })
     .then((res) => res.data);
+
+export const getBlob = (url: any) =>
+  instance
+    .post(
+      "memes/download/",
+      { url: url },
+      {
+        headers: {
+          "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+      }
+    )
+    .then((res) => res.data);
