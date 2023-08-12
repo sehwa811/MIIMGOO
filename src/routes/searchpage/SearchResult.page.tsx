@@ -14,6 +14,15 @@ const SelectedTagsBox = styled.div`
   gap: 0.75rem;
 `;
 
+const Wrapper = styled.div`
+display: flex;
+
+  gap: 0.75rem 0.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  top: 2.45rem;
+`
+
 const SearchResultPage = () => {
   const { state } = useLocation();
 
@@ -31,13 +40,14 @@ const SearchResultPage = () => {
   const results: any = [];
   useEffect(() => {
     if (data) {
-      /* const values = Object.values(data);
+      console.log(data);
+      const values = Object.values(data);
       console.log(values);
       for (const i of values) {
         const value: any = i;
         results.push(...value);
       }
-      console.log(results); */
+      console.log(results);
       setResultData(results);
     }
   }, [data]);
@@ -49,11 +59,13 @@ const SearchResultPage = () => {
       <LogoPart />
       <SelectedTagsBox>{state}</SelectedTagsBox>
 
-      {resultData ? (
-        resultData.map((item) => <UpperCardComponent image={item} />)
-      ) : (
-        <>데이터를 불러오고 있습니다...</>
-      )}
+      <Wrapper className="search-result-images">
+        {resultData ? (
+          resultData.map((item) => <UpperCardComponent image={item} />)
+        ) : (
+          <>데이터를 불러오고 있습니다...</>
+        )}
+      </Wrapper>
     </>
   );
 };

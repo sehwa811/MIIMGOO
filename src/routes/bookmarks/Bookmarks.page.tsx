@@ -14,6 +14,7 @@ const ImageCardBox = styled.div`
   flex-wrap: wrap;
   position: relative;
   top: 2.45rem;
+  padding-bottom: 2rem;
 `;
 
 export default function BookmarksPage() {

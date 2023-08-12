@@ -111,12 +111,14 @@ export const postTagsList = (tagList: ITag[]) =>
     })
     .then((res) => res.data);
 
-export const getSearchResult = (state: any) => instance
-.get(`memes/search/tag/?tags=${encodeURIComponent(JSON.stringify(state))}`)
-.then((res) => res.status);
-
-export const postComment = (id: number, text: string) =>
+export const getSearchResult = (state: any) =>
   instance
+    .get(`memes/search/tag/?tags=${encodeURIComponent(JSON.stringify(state))}`)
+    .then((res) => res.data);
+
+export const postComment = ({ id, text }: any) => {
+  console.log("CHECK", id, text);
+  return instance
     .post(
       `memes/${id}/comment`,
       { description: text },
@@ -126,7 +128,8 @@ export const postComment = (id: number, text: string) =>
         },
       }
     )
-    .then((res) => res.data);
+    .then((res) => res.status);
+};
 //id, text 잘 넘어가는데 CORS 뜸
 //tex
 

@@ -13,24 +13,35 @@ const LowerBody = styled.div`
   flex-direction: column;
   gap: 0.75rem;
   position: relative;
-  top: 1.75rem;
-  padding-bottom: 1rem;
+  top: 2.5rem;
+  padding-bottom: 4rem;
+`;
+
+const ImageBoxes = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  top: 0.75rem;
 `;
 
 const HomeLowerComponent = () => {
   const [rawData, setRawData] = useState("");
 
-  const { data, isError, isLoading } = useQuery(["homeimage"], getHomeImg, {
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
-  });
+  const { data, isError, isLoading } = useQuery(
+    ["homeimage-lower"],
+    getHomeImg,
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+    }
+  );
 
   useEffect(() => {
     if (data) {
       setRawData(data);
     }
   }, [data]);
-  
 
   return (
     <>
@@ -39,10 +50,12 @@ const HomeLowerComponent = () => {
       ) : (
         <LowerBody className="lower-body">
           <LabelComponent labelText={lowerText} />
-          <LowerCardComponent image={rawData[0]} />
-          <LowerCardComponent image={rawData[1]} />
-          <LowerCardComponent image={rawData[2]} />
-          <LowerCardComponent image={rawData[3]} />
+          <ImageBoxes>
+            <LowerCardComponent image={rawData[0]} />
+            <LowerCardComponent image={rawData[1]} />
+            <LowerCardComponent image={rawData[2]} />
+            <LowerCardComponent image={rawData[3]} />
+          </ImageBoxes>
         </LowerBody>
       )}
     </>

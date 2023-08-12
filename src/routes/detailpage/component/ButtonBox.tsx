@@ -7,7 +7,7 @@ import { ReactComponent as Download } from "../../../svg/Download_light.svg";
 import { saveAs } from "file-saver";
 import { postFav } from "../../../utils/axios";
 import Icon from "../../../components/icon/IconFactory.component";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const Wrapper = styled.div`
   display: flex;
@@ -61,12 +61,16 @@ const ButtonBox = ({ detailInfo }: any) => {
   /* const downloadImg = () => {
     saveAs(detailInfo.meme_url, "filename")
   } */
-
-  const handleIsFav = async () => {
-    postFav(id)
-      .then((res) => console.log("Fav changed"))
-      .catch((err) => console.error);
+  
+  const queryClient = useQueryClient();
+  const handleIsFav = () => {
+    favortites.mutate(id);
   };
+  const favortites = useMutation(postFav, {
+    onSuccess: () => {
+      queryClient.resetQueries(["imageDetail", id]);
+    },
+  });
 
   return (
     <>

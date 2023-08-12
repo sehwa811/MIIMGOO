@@ -9,17 +9,22 @@ import {
   FlexBox,
 } from "./CommentBox.styles";
 import { postComment } from "../../../../utils/axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const TextInputComponent = ({ id }: any) => {
-    const [text, setText] = useState<string>("");
+  const [text, setText] = useState("");
 
-    const ButtonClick = async () => {
-        setText("");
-        await postComment(id, text)
-          .then((res) => console.log(res))
-          .catch((err) => console.error(err));
-      };
-    
+  const queryClient = useQueryClient();
+  const ButtonClick = async () => {
+    setText("");
+    commentUpdate.mutate({ id, text });
+  };
+
+  const commentUpdate = useMutation(postComment, {
+    onSuccess: () => {
+      queryClient.resetQueries(["imageDetail", id]);
+    },
+  });
 
   return (
     <Label className="text-input">
