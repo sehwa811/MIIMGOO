@@ -14,11 +14,11 @@ const instance = axios.create({
 });
 
 //네이버 로그인
-export const naverLogin = (code: string) =>
+export const kakaoLogin = (code: string) =>
   instance
     .post(
-      "users/naver/",
-      { code, state: "miimgoo" },
+      "users/kakao/",
+      { code: "miimgoo" },
       {
         headers: {
           "X-CSRFToken": Cookie.get("csrftoken") || "",
@@ -27,8 +27,8 @@ export const naverLogin = (code: string) =>
     )
     .then((response) => response.status);
 
-export const getNaverUrl = async () =>
-  instance.get("users/naver/request").then((response) => {
+export const getKakaoUrl = async () =>
+  instance.get("users/kakao/request").then((response) => {
     window.location.href = response.data.url;
   });
 
@@ -111,19 +111,9 @@ export const postTagsList = (tagList: ITag[]) =>
     })
     .then((res) => res.data);
 
-export const getSearchResult = (state: any[]) => {
-  console.log(state);
-  const encodedTags = Object.entries(state)
-    .map(
-      ([key, tags]: any) =>
-        `${key}=${tags.map((tag: any) => encodeURIComponent(tag)).join(",")}`
-    )
-    .join("&");
-
-  const url = `memes/search/tag/?${encodedTags}`;
-  console.log("URL", url);
-  return instance.get(url).then((res) => res.data);
-};
+export const getSearchResult = (state: any) => instance
+.get(`memes/search/tag/?tags=${encodeURIComponent(JSON.stringify(state))}`)
+.then((res) => res.status);
 
 export const postComment = (id: number, text: string) =>
   instance

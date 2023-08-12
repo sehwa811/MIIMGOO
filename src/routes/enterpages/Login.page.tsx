@@ -3,10 +3,10 @@ import axios from "axios";
 
 import Button from "../../components/basics/button.component";
 import WelcomeMsg from "./WelcomeMsg.component";
-import { API_HOST } from "../../utils/API";
+import { ReactComponent as Kakao } from "./kakao2.svg";
 
-import { Background, LogoBox, ButtonBox, ButtonLabel } from "./Login.styles";
-import { getNaverUrl } from "../../utils/axios";
+import { Background, LogoBox, ButtonBox, ButtonLabel, Label } from "./Login.styles";
+import { getKakaoUrl } from "../../utils/axios";
 
 import Logo from "./Logo.png";
 
@@ -17,19 +17,23 @@ export default function LoginPage() {
     navigate("/home");
   };
 
- 
   return (
     <Background className="login-page">
       <WelcomeMsg />
-      <LogoBox><img src={Logo} /></LogoBox>
+      <LogoBox>
+        <img src={Logo} />
+      </LogoBox>
       <ButtonBox>
         <Button
-          onClick={getNaverUrl}
-          color="white"
-          background="#03C75A"
+          onClick={getKakaoUrl}
+          color="#000"
+          background="#FEE500"
           border="none"
         >
-          <ButtonLabel>네이버 로그인</ButtonLabel>
+          <Label>
+            <Kakao />
+            <ButtonLabel>카카오 로그인</ButtonLabel>
+          </Label>
         </Button>
         <Button onClick={gotoHome}>
           <ButtonLabel>비회원으로 둘러보기</ButtonLabel>

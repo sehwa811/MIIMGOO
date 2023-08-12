@@ -21,8 +21,8 @@ const Wrapper = styled.div`
   max-width: 24.375rem;
   margin-left: auto;
   margin-right: auto;
-  height: 100vh;
-  background: linear-gradient(#0500ff 30%, rgba(196, 196, 196, 0) 100%);
+  height: auto;
+  background: linear-gradient(#0500ff 10%, rgba(137,135,234)50%,rgba(196, 196, 196, 0));
   background-repeat: no-repeat;
 `;
 

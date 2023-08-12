@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import LoginLoadingPage from "./LoginLoading.component";
 
-import { naverLogin } from "../../utils/axios";
+import { kakaoLogin } from "../../utils/axios";
 
 export default function KakaoLoginPage() {
   const navigate = useNavigate();
 
   const { search } = useLocation();
-  const mutation = useMutation(naverLogin, {
+  const mutation = useMutation(kakaoLogin, {
     onMutate: () => {
       console.log("mutating");
     },

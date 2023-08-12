@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import LogoPart from "../detailpage/component/LogoPart";
 import LabelComponent from "../../components/basics/label-box/Label.component";
 
-
-
 import styled from "styled-components";
 import { useState } from "react";
+
+
 
 const AdminLogin = styled.div`
   position: relative;
@@ -37,11 +37,11 @@ export default function AccoutPage() {
     <div>
       <LogoPart />
       <LabelComponent top="1.19rem" labelText="계정" />
+      <button><span>로그아웃</span></button>
+      <button><span>회원탈퇴</span></button>
       <AdminLogin onClick={handleOnClick}>
         <span>밈구의 관리자로 로그인하시겠습니까?</span>
       </AdminLogin>
-
-
     </div>
   );
 }
