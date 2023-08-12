@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  width: 100%;
+  padding-bottom: 2rem;
+`;
 
 export const Title = styled.div`
   display: flex;
@@ -28,7 +31,7 @@ export const FlexBox = styled.div`
   gap: 0.75rem;
   position: relative;
   top: 1.25rem;
-`
+`;
 
 export const Label = styled.div`
   position: relative;
@@ -49,7 +52,7 @@ export const Textinput = styled.input`
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.4);
 
   &::placeholder {
-    color: var(--typho-grey-1);
+    color: var(--typho-grey-2);
     font-family: Spoqa Han Sans Neo;
     font-size: 0.75rem;
     font-style: normal;
@@ -69,7 +72,7 @@ export const InputButton = styled.button`
   gap: 0.625rem;
   border-radius: 0.25rem;
   border: 0.4px solid var(--typho-black-1);
-  background: #0075FF;
+  background: #0075ff;
 
   //text style
   color: #fff;

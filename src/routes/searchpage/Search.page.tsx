@@ -90,6 +90,8 @@ const TagComponent = ({ tag, onClick, clicked }: tagProps) => {
 };
 
 
+
+
 export default function SearchPage() {
   const [clicked, setClicked] = useState<boolean>(false);
 
@@ -114,18 +116,20 @@ export default function SearchPage() {
     }
   }, [data]);
 
-  
 
   const searchTags = useSelector(selectSearchTags);
 
   //결과 요청 보내는 데 필요한 태그리스트 dispatch
   //태그 색 변화시키기
+
   const clickTag = (e: any) => {
     const taginner: string = e.target.innerText.substr(1);
     dispatch(searchTagAdd(searchTags, taginner));
     console.log(e.currentTarget);
     //dispatch(changeColor(e.currentTarget));
   };
+
+  
 
   return (
     <>

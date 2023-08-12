@@ -14,11 +14,11 @@ const instance = axios.create({
 });
 
 //네이버 로그인
-export const naverLogin = (code: string) =>
+export const kakaoLogin = (code: string) =>
   instance
     .post(
-      "users/naver/",
-      { code, state: "miimgoo" },
+      "users/kakao/",
+      { code: code },
       {
         headers: {
           "X-CSRFToken": Cookie.get("csrftoken") || "",
@@ -27,8 +27,8 @@ export const naverLogin = (code: string) =>
     )
     .then((response) => response.status);
 
-export const getNaverUrl = async () =>
-  instance.get("users/naver/request").then((response) => {
+export const getKakaoUrl = async () =>
+  instance.get("users/kakao/request").then((response) => {
     window.location.href = response.data.url;
   });
 
@@ -111,22 +111,14 @@ export const postTagsList = (tagList: ITag[]) =>
     })
     .then((res) => res.data);
 
-export const getSearchResult = (state: any[]) => {
-  console.log(state);
-  const encodedTags = Object.entries(state)
-    .map(
-      ([key, tags]: any) =>
-        `${key}=${tags.map((tag: any) => encodeURIComponent(tag)).join(",")}`
-    )
-    .join("&");
-
-  const url = `memes/search/tag/?${encodedTags}`;
-  console.log("URL", url);
-  return instance.get(url).then((res) => res.data);
-};
-
-export const postComment = (id: number, text: string) =>
+export const getSearchResult = (state: any) =>
   instance
+    .get(`memes/search/tag/?tags=${encodeURIComponent(JSON.stringify(state))}`)
+    .then((res) => res.data);
+
+export const postComment = ({ id, text }: any) => {
+  console.log("CHECK", id, text);
+  return instance
     .post(
       `memes/${id}/comment`,
       { description: text },
@@ -136,7 +128,8 @@ export const postComment = (id: number, text: string) =>
         },
       }
     )
-    .then((res) => res.data);
+    .then((res) => res.status);
+};
 //id, text 잘 넘어가는데 CORS 뜸
 //tex
 
@@ -155,6 +148,28 @@ export const postFav = (id: number) =>
 
 export const getFavImages = () =>
   instance.get("favorites/me/").then((res) => res.data);
+
+export const postLogout = () =>
+  instance
+    .post(
+      "users/logout/",
+      {},
+      {
+        headers: {
+          "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+      }
+    )
+    .then((res) => res.data);
+
+export const deleteUser = () =>
+  instance
+    .delete("users/me/", {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((res) => res.data);
 
 export const getBlob = (url: any) =>
   instance

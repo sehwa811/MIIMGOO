@@ -37,7 +37,16 @@ export const ButtonLabel = styled.span`
   font-family: Spoqa Han Sans Neo;
   font-size: 1rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
   letter-spacing: -0.02rem;
+  width: fit-content;
 `;
+
+export const Label = styled.div`
+  display:flex;
+  width: 10rem;
+  justify-content: space-between;
+  align-items:center;
+  gap:0.75rem;
+`

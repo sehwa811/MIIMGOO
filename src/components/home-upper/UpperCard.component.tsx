@@ -72,9 +72,7 @@ interface uppercardProps {
 
 const UpperCardComponent = ({ image = null }: uppercardProps) => {
   const navigate = useNavigate();
-  console.log(image);
-
-  //수정
+  
   const goToDetail = () => {
     navigate(`/detail/${image.pk}`, { state: image.pk });
   };
