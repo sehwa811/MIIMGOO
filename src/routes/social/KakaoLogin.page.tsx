@@ -17,8 +17,8 @@ export default function KakaoLoginPage() {
       console.log("success");
       navigate("/home");
     },
-    onError: () => {
-      if (mutation.data === 403) {
+    onError: (status:any) => {
+      if (status.response.status === 403) {
         alert("로그인에 실패하였습니다. 재시도해 이메일 수집에 동의해주세요. ");
         navigate("/");
       }

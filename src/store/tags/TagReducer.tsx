@@ -9,7 +9,7 @@ export interface selectedContext {
 
 export interface actionType {
   type: string;
-  payload: any;
+  payload: string[];
   category?: string;
 }
 

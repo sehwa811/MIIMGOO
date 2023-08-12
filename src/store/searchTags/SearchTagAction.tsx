@@ -11,10 +11,14 @@ export const searchTagAdd = (searchTags: string[], tag: string) => {
   return createAction(ACTION.SEARCH_ADD, newSearchTags);
 };
 
+/* export const removeFromSearchTags = (searchTags: string[], tag: string) => {
+  searctTags.filter((item)=>)
+} */
 
-export const removeFromSearchTags = (searchTags: string[], tag: string) => {
-  console.log(tag)
-}
+export const searchTagRemove = (searchTags: string[], tag: string) => {
+  const newArray:any = searchTags.filter((item)=>item !== tag)
+  return createAction(ACTION.REMOVE, newArray);
+};
 
 export const clearSearchTag = () => createAction(ACTION.CLEAR);
 

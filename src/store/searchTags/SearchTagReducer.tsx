@@ -7,7 +7,7 @@ export interface searchtagProps {
 
 export interface actionType {
   type: string;
-  payload: any;
+  payload: string[];
 }
 
 const INITIAL_VALUE: searchtagProps = {
@@ -22,14 +22,13 @@ export const SearchTagReducer = (
   const { type, payload } = action;
   switch (type) {
     case ACTION.SEARCH_ADD:
-      console.log(payload)
       return { ...state, searchTags: payload };
     case ACTION.CLICKED:
-      console.log(payload)
       return { ...state};
     case ACTION.CLEAR:
       return {...state, searchTags: []};
     case ACTION.REMOVE:
+      console.log(state, payload)
       return {...state, searchTags: payload};
     default:
       return state;

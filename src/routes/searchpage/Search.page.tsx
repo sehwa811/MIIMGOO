@@ -14,16 +14,17 @@ import { selectSearchTags } from "../../store/searchTags/SearchTagSelector";
 import {
   changeColor,
   searchTagAdd,
+  searchTagRemove,
 } from "../../store/searchTags/SearchTagAction";
 
 const AllBox = styled.div`
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   position: relative;
   top: 2rem;
   padding-bottom: 2rem;
-`
+`;
 
 const CategoriesBox = styled.div`
   display: flex;
@@ -75,6 +76,7 @@ const SearchTagBox = styled.div<Itb>`
     letter-spacing: -0.02rem;
   }
 `;
+
 interface tagProps {
   tag: string;
   onClick(e: any): void;
@@ -88,9 +90,6 @@ const TagComponent = ({ tag, onClick, clicked }: tagProps) => {
     </SearchTagBox>
   );
 };
-
-
-
 
 export default function SearchPage() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -116,20 +115,16 @@ export default function SearchPage() {
     }
   }, [data]);
 
-
   const searchTags = useSelector(selectSearchTags);
-
-  //결과 요청 보내는 데 필요한 태그리스트 dispatch
-  //태그 색 변화시키기
 
   const clickTag = (e: any) => {
     const taginner: string = e.target.innerText.substr(1);
-    dispatch(searchTagAdd(searchTags, taginner));
-    console.log(e.currentTarget);
-    //dispatch(changeColor(e.currentTarget));
+    if (searchTags?.includes(taginner)) {
+      dispatch(searchTagRemove(searchTags, taginner));
+    } else {
+      dispatch(searchTagAdd(searchTags, taginner));
+    }
   };
-
-  
 
   return (
     <>
@@ -142,61 +137,61 @@ export default function SearchPage() {
           <SelectedTags />
 
           <AllBox>
-          <CategoriesBox>
-            <Label>상황별 키워드</Label>
-            <Categories>
-              {circumOptions.map((item: string) => (
-                <TagComponent
-                  key={item}
-                  tag={item}
-                  onClick={clickTag}
-                  clicked={clicked}
-                />
-              ))}
-            </Categories>
-          </CategoriesBox>
+            <CategoriesBox>
+              <Label>상황별 키워드</Label>
+              <Categories>
+                {circumOptions.map((item: string) => (
+                  <TagComponent
+                    key={item}
+                    tag={item}
+                    onClick={clickTag}
+                    clicked={searchTags?.includes(item)}
+                  />
+                ))}
+              </Categories>
+            </CategoriesBox>
 
-          <CategoriesBox>
-            <Label>감정별 키워드</Label>
-            <Categories>
-              {emotionOptions.map((item: string) => (
-                <TagComponent
-                  key={item}
-                  tag={item}
-                  onClick={clickTag}
-                  clicked={clicked}
-                />
-              ))}
-            </Categories>
-          </CategoriesBox>
+            <CategoriesBox>
+              <Label>감정별 키워드</Label>
+              <Categories>
+                {emotionOptions.map((item: string) => (
+                  <TagComponent
+                    key={item}
+                    tag={item}
+                    onClick={clickTag}
+                    clicked={searchTags?.includes(item)}
+                  />
+                ))}
+              </Categories>
+            </CategoriesBox>
 
-          <CategoriesBox>
-            <Label>인물별 키워드</Label>
-            <Categories>
-              {peopleOptions.map((item: string) => (
-                <TagComponent
-                  key={item}
-                  tag={item}
-                  onClick={clickTag}
-                  clicked={clicked}
-                />
-              ))}
-            </Categories>
-          </CategoriesBox>
+            <CategoriesBox>
+              <Label>인물별 키워드</Label>
+              <Categories>
+                {peopleOptions.map((item: string) => (
+                  <TagComponent
+                    key={item}
+                    tag={item}
+                    onClick={clickTag}
+                    clicked={searchTags?.includes(item)}
+                  />
+                ))}
+              </Categories>
+            </CategoriesBox>
 
-          <CategoriesBox>
-            <Label>기타 키워드</Label>
-            <Categories>
-              {othersOptions.map((item: string) => (
-                <TagComponent
-                  key={item}
-                  tag={item}
-                  onClick={clickTag}
-                  clicked={clicked}
-                />
-              ))}
-            </Categories>
-          </CategoriesBox>
+            <CategoriesBox>
+              <Label>기타 키워드</Label>
+              <Categories>
+                {othersOptions.map((item: string) => (
+                  <TagComponent
+                    key={item}
+                    tag={item}
+                    onClick={clickTag}
+                    clicked={searchTags?.includes(item)}
+                  />
+                ))}
+              </Categories>
+            </CategoriesBox>
           </AllBox>
         </div>
       )}

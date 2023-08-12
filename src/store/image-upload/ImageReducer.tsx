@@ -8,7 +8,7 @@ export interface imageContext {
 
 export interface actionType {
   type: string;
-  payload: File | string;
+  payload: any;
 }
 
 const INITIAL_VALUE: imageContext = {

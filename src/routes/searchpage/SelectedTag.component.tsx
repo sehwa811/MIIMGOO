@@ -67,33 +67,45 @@ const SelectedTagBox = styled.div`
   }
 `;
 
+interface props{
+  tag:any;
+  onClick():void;
+}
+
+const IconComponent = ({tag, onClick}:props) => {
+  console.log(tag)
+  return (
+    <Close onClick={onClick}  />
+  )
+}
+
 const SelectedTags = () => {
   const navigate = useNavigate();
   const searchTags = useSelector(selectSearchTags);
   const dispatch = useDispatch();
 
-  const removeTag = (e: any) => {
-    console.log(e.currentTarget);
-  };
+  const removeTag = (e: any) => 
+ {  console.log()}
+
+
 
   const selectedArray = [];
-  for (let i = 0; i < searchTags.length; i++) {
+  for (let i = 0; i < searchTags?.length; i++) {
     selectedArray.push(
       <SelectedTagBox>
         <span>{`#${searchTags[i]}`}</span>
-        <Close onClick={removeTag} />
+        <IconComponent tag={searchTags[i]} onClick={removeTag} />
       </SelectedTagBox>
     );
   }
 
   const handleOnClick = () => {
-    if (searchTags.length !== 0) {
+    if (searchTags?.length !== 0) {
       navigate("/search-result", { state: searchTags });
       dispatch(clearSearchTag());
     }
   };
 
- 
 
   return (
     <SelectedBox>
