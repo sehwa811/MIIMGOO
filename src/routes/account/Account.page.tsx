@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+
 import LogoPart from "../detailpage/component/LogoPart";
 import LabelComponent from "../../components/basics/label-box/Label.component";
+import { deleteUser, postLogout } from "../../utils/axios";
 
 import styled from "styled-components";
-import { useState } from "react";
-import { postLogout } from "../../utils/axios";
+import Modal from 'react-modal';
 
 const Wrapper = styled.div`
   display: flex;
@@ -91,13 +94,37 @@ export default function AccoutPage() {
   const handleShow = () => setShow(true);
 
   const handleOnClick = () => {
-    navigate("/admin");
+    handleShow();
+    //navigate("/admin");
   };
 
+  const userLogOut = useMutation(postLogout, {
+    onSuccess: () => {
+      alert("성공적으로 로그아웃 되었습니다 :)");
+    },
+  });
+
+  const deleteUserInfo = useMutation(deleteUser, {
+    onMutate: () => {
+      console.log("mutating");
+    },
+    onSuccess: () => {
+      alert("회원정보가 성공적으로 삭제되었습니다 :)")
+      navigate("/");
+    },
+    onError: () => {
+      console.log("error");
+    },
+  });
+
   const handleLogOut = () => {
-    postLogout();
+    userLogOut.mutate();
     navigate("/");
-  }
+  };
+
+  const deleteAccount = () => {
+    deleteUserInfo.mutate();
+  };
 
   return (
     <>
@@ -110,7 +137,7 @@ export default function AccoutPage() {
             <span>로그아웃</span>
           </LogoutBox>
 
-          <DeleteAccoutBox>
+          <DeleteAccoutBox onClick={deleteAccount}>
             <span>회원탈퇴</span>
           </DeleteAccoutBox>
 
@@ -118,6 +145,8 @@ export default function AccoutPage() {
             <span>밈구의 관리자로 로그인하시겠습니까?</span>
           </AdminLogin>
         </ButtonBox>
+        {/* <Modal isOpen={show} /> */}
+
       </Wrapper>
     </>
   );

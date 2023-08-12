@@ -161,3 +161,12 @@ export const postLogout = () =>
       }
     )
     .then((res) => res.data);
+
+export const deleteUser = () =>
+  instance
+    .delete("users/me/", {
+      headers: {
+        "X-CSRFToken": Cookie.get("csrftoken") || "",
+      },
+    })
+    .then((res) => res.data);
