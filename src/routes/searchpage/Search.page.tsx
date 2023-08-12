@@ -114,6 +114,8 @@ export default function SearchPage() {
     }
   }, [data]);
 
+  
+
   const searchTags = useSelector(selectSearchTags);
 
   //결과 요청 보내는 데 필요한 태그리스트 dispatch
