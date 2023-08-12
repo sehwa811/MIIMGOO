@@ -148,3 +148,16 @@ export const postFav = (id: number) =>
 
 export const getFavImages = () =>
   instance.get("favorites/me/").then((res) => res.data);
+
+export const postLogout = () =>
+  instance
+    .post(
+      "users/logout/",
+      {},
+      {
+        headers: {
+          "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+      }
+    )
+    .then((res) => res.data);

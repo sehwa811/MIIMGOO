@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Search } from "./Search.svg";
 import { ReactComponent as Close } from "./Close.svg";
 import { clearSearchTag } from "../../store/searchTags/SearchTagAction";
+import { useEffect } from "react";
 
 const SelectedBox = styled.div`
   display: inline-flex;
@@ -39,7 +40,7 @@ const FlexBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-
+  max-width: 18.22rem;
 `;
 
 const SelectedTagBox = styled.div`
@@ -71,12 +72,16 @@ const SelectedTags = () => {
   const searchTags = useSelector(selectSearchTags);
   const dispatch = useDispatch();
 
+  const removeTag = (e: any) => {
+    console.log(e.currentTarget);
+  };
+
   const selectedArray = [];
   for (let i = 0; i < searchTags.length; i++) {
     selectedArray.push(
       <SelectedTagBox>
         <span>{`#${searchTags[i]}`}</span>
-        <Close />
+        <Close onClick={removeTag} />
       </SelectedTagBox>
     );
   }
@@ -84,9 +89,11 @@ const SelectedTags = () => {
   const handleOnClick = () => {
     if (searchTags.length !== 0) {
       navigate("/search-result", { state: searchTags });
-    dispatch(clearSearchTag());
+      dispatch(clearSearchTag());
     }
-};
+  };
+
+ 
 
   return (
     <SelectedBox>
