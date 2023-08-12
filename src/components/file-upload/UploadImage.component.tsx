@@ -59,7 +59,7 @@ const UploadImage = () => {
         type="text"
         value={inputText}
         onChange={(e: any) => setInputText(e.target.value)}
-      />
+      /><br></br>
       <AllSelects />
       <button onClick={sendToServer}>등록하기</button>
       <TagRegistration />

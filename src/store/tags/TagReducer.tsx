@@ -1,22 +1,23 @@
 import { ACTION } from "./TagTypes";
 
 export interface selectedContext {
-  circum: string | null;
-  emotions: string | null;
-  people: string | null;
-  others: string | null;
+  circum: string[] | null;
+  emotions: string[] | null;
+  people: string[] | null;
+  others: string[] | null;
 }
 
 export interface actionType {
   type: string;
   payload: any;
+  category?: string;
 }
 
 const INITIAL_VALUE: selectedContext = {
-  circum: null,
-  emotions: null,
-  people: null,
-  others: null,
+  circum: [],
+  emotions: [],
+  people: [],
+  others: [],
 };
 
 export const TagReducer = (
@@ -25,8 +26,14 @@ export const TagReducer = (
 ): selectedContext => {
   const { type, payload } = action;
   switch (type) {
-    case ACTION.ADD:
-      return { ...state, [payload.id]: payload.innerText };
+    case ACTION.CIRCUM_ADD:
+      return { ...state, circum: payload };
+    case ACTION.PEOPLE_ADD:
+      return { ...state, people: payload };
+    case ACTION.EMOTION_ADD:
+      return { ...state, emotions: payload };
+    case ACTION.OTHERS_ADD:
+      return { ...state, others: payload };
     default:
       return state;
   }

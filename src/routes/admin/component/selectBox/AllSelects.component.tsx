@@ -1,18 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 
 import CustomSelectBox from "./SelectBox.component";
-import { selectTags } from "../../../../store/tags/TagSelector";
+import { selectCircum, selectEmotion, selectOthers, selectPeople, selectTags } from "../../../../store/tags/TagSelector";
 
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getTagsList } from "../../../../utils/axios";
+import { SelectBox } from "./SelectBox.styles";
+import { dispatchCircum, dispatchEmotion, dispatchOthers, dispatchPeople, dispatchTag, dispatchToReducer } from "../../../../store/tags/TagAction";
 
 const AllSelects = () => {
   const [circumOptions, setCircumOptions] = useState([]);
   const [emotionOptions, setEmotionOptions] = useState([]);
   const [peopleOptions, setPeopleOptions] = useState([]);
   const [othersOptions, setOthersOptions] = useState([]);
+
+  const dispatch = useDispatch();
+
 
   const { data, isError, isLoading } = useQuery(["tagsList"], getTagsList);
 
@@ -22,50 +27,58 @@ const AllSelects = () => {
       setEmotionOptions(data["감정"]);
       setPeopleOptions(data["인물"]);
       setOthersOptions(data["기타"]);
-      console.log(circumOptions)
+      console.log(circumOptions);
     }
   }, [data]);
-  const { circum, people, emotions, others } = useSelector(selectTags);
-
   
+  
+  const circum = useSelector(selectCircum);
+  const emotion = useSelector(selectEmotion);
+  const people = useSelector(selectPeople);
+  const others = useSelector(selectOthers);
+
+
+
+  const handleOnClick = (e:any) => {
+    switch (e.target.id) { 
+      case "circum":
+        return dispatch(dispatchCircum(circum, e.target.innerText));
+      case "emotion":
+        return dispatch(dispatchEmotion(emotion, e.target.innerText));
+      case "people":
+        return dispatch(dispatchPeople(people, e.target.innerText));
+      case "others":
+        return dispatch(dispatchOthers(others, e.target.innerText));
+      }
+  }
+
   return (
     <>
       {isLoading ? (
         <div />
       ) : (
         <>
-          <CustomSelectBox
-            optionArray={circumOptions}
-            category={circum}
-            categoryName="circum"
-            placeholder="상황별"
-          />
-          <CustomSelectBox
-            optionArray={emotionOptions}
-            category={emotions}
-            categoryName="emotions"
-            placeholder="감정별"
-          />
-          <CustomSelectBox
-            optionArray={peopleOptions}
-            category={people}
-            categoryName="people"
-            placeholder="인물별"
-          />
-          <CustomSelectBox
-            optionArray={othersOptions}
-            category={others}
-            categoryName="others"
-            placeholder="기타"
-          />
-          {/* <Select
-            defaultValue="상황별"
-            isMulti
-            name="colors"
-            options={circumOptions}
-            className="basic-multi-select"
-            classNamePrefix="select"
-          /> */}
+          <select multiple style={{ width: "80px" }}>
+            {circumOptions.map((item: string) => (
+              <option id="circum" onClick={handleOnClick}>{item}</option>
+            ))}
+          </select>
+          <select multiple style={{ width: "80px" }}>
+            {emotionOptions.map((item: string) => (
+              <option id="emotion" onClick={handleOnClick}>{item}</option>
+            ))}
+          </select>
+          <select multiple style={{ width: "80px" }}>
+            {peopleOptions.map((item: string) => (
+              <option id="people" onClick={handleOnClick}>{item}</option>
+            ))}
+          </select>
+          <select multiple style={{ width: "80px" }}>
+            {othersOptions.map((item: string) => (
+              <option id="others" onClick={handleOnClick}>{item}</option>
+            ))}
+          </select>
+       
         </>
       )}
     </>
