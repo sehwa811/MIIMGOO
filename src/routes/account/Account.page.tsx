@@ -76,7 +76,7 @@ const DeleteAccoutBox = styled.button`
   }
 `;
 
-const AdminLogin = styled.div`
+const AdminLogin = styled.a`
   span {
     color: #c4c4c4;
     text-align: center;
@@ -151,6 +151,7 @@ export default function AccoutPage() {
               {/* <AdminLogin onClick={handleOnClick}>
               <span>밈구의 관리자로 로그인하시겠습니까?</span>
             </AdminLogin> */}
+            
             </ButtonBox>
           </Wrapper>
           <Modal

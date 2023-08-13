@@ -28,6 +28,7 @@ export const ButtonBox = styled.div`
   height: fit-content;
   position: absolute;
   bottom: 12%;
+  /* bottom: 12%; */
   display: flex;
   flex-direction: column;
   gap: 1rem;
