@@ -31,7 +31,7 @@ const TextInputComponent = ({ id }: any) => {
       <Textinput
         value={text}
         onChange={(e: any) => setText(e.target.value)}
-        placeholder="|   20자 내로 댓글을 남겨주세요:)"
+        placeholder="|   200자 내로 댓글을 남겨주세요:)"
       />
       <InputButton onClick={ButtonClick}>등록</InputButton>
     </Label>
