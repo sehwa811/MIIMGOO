@@ -13,14 +13,16 @@ import { useMutation } from "@tanstack/react-query";
 import { postComment } from "../../../../utils/axios";
 import TextInput from "./TextInput";
 import TextInputComponent from "./TextInput";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../../../store/UserInfoReducer";
 
 
 const CommentBox = ({ id, comments }: any) => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const commentArray: string[] = [];
   const arrayReversed = comments.reverse();
   arrayReversed.forEach((item: any) => commentArray.push(item.description));
-  console.log(commentArray);
 
   const components = [];
 
@@ -39,7 +41,7 @@ const CommentBox = ({ id, comments }: any) => {
             <span className="numbers">{commentArray.length}</span>
           </Title>
           <FlexBox>
-              <TextInputComponent id={id} />
+              {isLoggedIn ? <TextInputComponent id={id} /> : <div></div>}
                 {components}   
           </FlexBox>
         </Wrapper>

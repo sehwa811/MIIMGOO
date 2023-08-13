@@ -26,13 +26,13 @@ const ImageTitleBox = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 7.125rem;
-
   border-radius: 0.25rem;
   border: 1px solid var(--main-white);
 `;
 
 const TitleSpan = styled.span`
   color: var(--main-white);
+  max-width: 17rem;
   text-align: center;
   font-family: Spoqa Han Sans Neo;
   font-size: 1.25rem;
@@ -40,7 +40,6 @@ const TitleSpan = styled.span`
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.03rem;
-
   white-space: nowrap;
   overflow: hidden;
 `;

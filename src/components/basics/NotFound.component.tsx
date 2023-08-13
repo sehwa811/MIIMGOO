@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0rem;
   height: 100%;
   width: 100%;
 
@@ -28,11 +28,11 @@ const Wrapper = styled.div`
 
   text {
     color: white;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    letter-spacing: -0.025rem;
+    letter-spacing: -0.02rem;
     text-align: center;
   }
 
@@ -45,6 +45,7 @@ const Wrapper = styled.div`
     line-height: normal;
     letter-spacing: -0.025rem;
     text-align: center;
+    text-decoration-line: underline;
   }
 `;
 
@@ -67,7 +68,7 @@ const NotFound = () => {
           <text>죄송합니다.</text>
           <text>페이지를 찾을 수 없어요.</text>
         </TextBox>
-        <span onClick={()=>navigate(-1)} >이전 화면으로 이동하기</span>
+        <span onClick={()=>navigate(-1)}  >이전 화면으로 이동하기</span>
       </Wrapper>
     </NotFoundWrapper>
   );

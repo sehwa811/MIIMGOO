@@ -1,6 +1,6 @@
-import Crying from "./404.gif";
+import Loading from "./loading.gif";
 import styled from "styled-components";
-import LogoComponent from "./logo/Logo.component";
+import LogoComponent from "../../components/basics/logo/Logo.component";
 import { useNavigate } from "react-router-dom";
 
 const NotFoundWrapper = styled.div`
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 
   text {
     color: white;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -55,22 +55,21 @@ const TextBox = styled.div`
   gap: 0;
 `;
 
-const UserOnlyAlert = () => {
-  const navigate = useNavigate();
+const LoadingComponent = () => {
 
   return (
     <NotFoundWrapper>
       <LogoComponent />
       <Wrapper className="not-found">
-        <img src={Crying} />
+        <img src={Loading} />
 
         <TextBox>
-          <text>로그인이 필요합니다.</text>
+          <text>로딩 중입니다...👀</text>
+          
         </TextBox>
-        <span onClick={()=>navigate("/")}  >로그인 하러가기</span>
       </Wrapper>
     </NotFoundWrapper>
   );
 };
 
-export default UserOnlyAlert;
+export default LoadingComponent;

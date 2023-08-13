@@ -7,7 +7,10 @@ import LabelComponent from "../../components/basics/label-box/Label.component";
 import { deleteUser, postLogout } from "../../utils/axios";
 
 import styled from "styled-components";
-import Modal from 'react-modal';
+import Modal from "../admin/component/modal.component";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../store/UserInfoReducer";
+import UserOnlyAlert from "../../components/basics/UseronlyAlert.component";
 
 const Wrapper = styled.div`
   display: flex;
@@ -88,8 +91,12 @@ const AdminLogin = styled.div`
 `;
 
 export default function AccoutPage() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   const navigate = useNavigate();
   const [show, setShow] = useState<boolean>(false);
+  const dispatch = useDispatch();
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -101,20 +108,18 @@ export default function AccoutPage() {
   const userLogOut = useMutation(postLogout, {
     onSuccess: () => {
       alert("성공적으로 로그아웃 되었습니다 :)");
+      dispatch({ type: "USER_LOG_OUT", payload: false });
     },
   });
 
   const deleteUserInfo = useMutation(deleteUser, {
-    onMutate: () => {
-      console.log("mutating");
-    },
+    onMutate: () => {},
     onSuccess: () => {
-      alert("회원정보가 성공적으로 삭제되었습니다 :)")
+      alert("회원정보가 성공적으로 삭제되었습니다 :)");
+      dispatch({ type: "USER_LOG_OUT", payload: false });
       navigate("/");
     },
-    onError: () => {
-      console.log("error");
-    },
+    onError: () => {},
   });
 
   const handleLogOut = () => {
@@ -128,25 +133,36 @@ export default function AccoutPage() {
 
   return (
     <>
-      <LogoPart />
-      <Wrapper>
-        <LabelComponent top="1.19rem" labelText="계정" />
+      {isLoggedIn ? (
+        <>
+          <LogoPart />
+          <Wrapper>
+            <LabelComponent top="1.19rem" labelText="계정" />
 
-        <ButtonBox>
-          <LogoutBox onClick={handleLogOut}>
-            <span>로그아웃</span>
-          </LogoutBox>
+            <ButtonBox>
+              <LogoutBox onClick={handleLogOut}>
+                <span>로그아웃</span>
+              </LogoutBox>
 
-          <DeleteAccoutBox onClick={deleteAccount}>
-            <span>회원탈퇴</span>
-          </DeleteAccoutBox>
+              <DeleteAccoutBox onClick={deleteAccount}>
+                <span>회원탈퇴</span>
+              </DeleteAccoutBox>
 
-          <AdminLogin onClick={handleOnClick}>
-            <span>밈구의 관리자로 로그인하시겠습니까?</span>
-          </AdminLogin>
-        </ButtonBox>
-   
-      </Wrapper>
+              <AdminLogin onClick={handleOnClick}>
+                <span>밈구의 관리자로 로그인하시겠습니까?</span>
+              </AdminLogin>
+            </ButtonBox>
+          </Wrapper>
+          <Modal
+            fontSize="1rem"
+            isModalOpen={show}
+            height="10rem"
+            close={handleClose}
+          />
+        </>
+      ) : (
+        <UserOnlyAlert />
+      )}
     </>
   );
 }

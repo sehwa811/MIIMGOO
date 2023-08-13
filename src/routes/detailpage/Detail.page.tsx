@@ -15,6 +15,9 @@ const ContentsBox = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  position:relative;
+  top: 2.12rem;
+  padding-bottom:2rem;
 `;
 
 export default function Detail() {
@@ -33,17 +36,7 @@ export default function Detail() {
     }
   );
 
-  /* const queryClient = useQueryClient();
-  const handleIsFav = () => {
-    favortites.mutate(id);
-  };
-  const favortites = useMutation(postFav, {
-    onSuccess: () => {
-      queryClient.resetQueries(["imageDetail", id]);
-    },
-  }); */
 
-  //image 정보 get
   useEffect(() => {
     if (data) {
       console.log(data);

@@ -6,6 +6,14 @@ import { ReactElement, useEffect, useState } from "react";
 import BookmarkImageCard from "./BookmarkImageCard";
 
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../store/UserInfoReducer";
+import LoadingComponent from "../social/Loading";
+import UserOnlyAlert from "../../components/basics/UseronlyAlert.component";
+
+const Wrapper = styled.div`
+
+`
 
 const ImageCardBox = styled.div`
   display: flex;
@@ -23,6 +31,9 @@ export default function BookmarksPage() {
     refetchOnMount: false,
   });
 
+
+
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [favData, setFavData] = useState<any>([]);
 
   const components: ReactElement[] = [];
@@ -35,7 +46,6 @@ export default function BookmarksPage() {
 
   for (let i = 0; i < favData.length; i++) {
     const imageInfo = favData[i].meme;
-    console.log(imageInfo);
     components.push(
       <BookmarkImageCard
         pk={imageInfo.pk}
@@ -47,16 +57,22 @@ export default function BookmarksPage() {
 
   return (
     <div>
-      {isLoading ? (
-        <div></div>
+      {isError ? (
+        <UserOnlyAlert />
       ) : (
-        <>
-          <LogoPart />
-          <LabelComponent top="1.19rem"  labelText="즐겨찾기" />
-          <ImageCardBox className="bookmarks-imagecards">
-            {components}
-          </ImageCardBox>
-        </>
+        <div>
+          {isLoading ? (
+            <div></div>
+          ) : (
+            <Wrapper>
+              <LogoPart />
+              <LabelComponent top="1.19rem" labelText="즐겨찾기" />
+              <ImageCardBox className="bookmarks-imagecards">
+                {components}
+              </ImageCardBox>
+            </Wrapper>
+          )}
+        </div>
       )}
     </div>
   );
