@@ -12,7 +12,7 @@ export const LogoBox = styled.div`
   height: 15rem;
   border-radius: 2rem;
   background-color: var(--main-orange);
-  position: relative;
+  position: absolute;
   top: 33.649%;
   left: 50%;
   transform: translate(-50%, 0%);
@@ -27,7 +27,7 @@ export const ButtonBox = styled.div`
   width: fit-content;
   height: fit-content;
   position: absolute;
-  bottom: 13.27%;
+  bottom: 12%;
   display: flex;
   flex-direction: column;
   gap: 1rem;

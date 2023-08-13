@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledDiv = styled.div`
   width: fit-content;
   height: fit-content;
-  position: absolute;
+  position: relative;
   top: 13.517%;
 
   h3 {

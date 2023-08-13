@@ -20,6 +20,7 @@ export default function LoginPage() {
   return (
     <Background className="login-page">
       <WelcomeMsg />
+      
       <LogoBox>
         <img src={Logo} />
       </LogoBox>
