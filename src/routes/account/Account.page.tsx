@@ -145,8 +145,7 @@ export default function AccoutPage() {
             <span>밈구의 관리자로 로그인하시겠습니까?</span>
           </AdminLogin>
         </ButtonBox>
-        <Modal isOpen={show} />
-
+   
       </Wrapper>
     </>
   );
