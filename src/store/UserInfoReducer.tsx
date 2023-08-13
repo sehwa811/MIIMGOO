@@ -27,4 +27,4 @@ export const UserInfoReducer = (
 };
 
 
-export const selectIsLoggedIn = (state:any) => state.user.isLoggedIn;
+export const selectIsLoggedIn = (state:any) => state.user.isLoggedin;

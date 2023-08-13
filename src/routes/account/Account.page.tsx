@@ -133,7 +133,8 @@ export default function AccoutPage() {
 
   return (
     <>
-    <>
+      {isLoggedIn ? (
+        <>
           <LogoPart />
           <Wrapper>
             <LabelComponent top="1.19rem" labelText="계정" />
@@ -148,8 +149,8 @@ export default function AccoutPage() {
               </DeleteAccoutBox>
 
               {/* <AdminLogin onClick={handleOnClick}>
-                <span>밈구의 관리자로 로그인하시겠습니까?</span>
-              </AdminLogin> */}
+              <span>밈구의 관리자로 로그인하시겠습니까?</span>
+            </AdminLogin> */}
             </ButtonBox>
           </Wrapper>
           <Modal
@@ -159,11 +160,9 @@ export default function AccoutPage() {
             close={handleClose}
           />
         </>
-      {/* {isLoggedIn ? (
-        
       ) : (
         <UserOnlyAlert />
-      )} */}
+      )}
     </>
   );
 }

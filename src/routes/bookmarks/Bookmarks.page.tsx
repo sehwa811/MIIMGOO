@@ -11,9 +11,7 @@ import { selectIsLoggedIn } from "../../store/UserInfoReducer";
 import LoadingComponent from "../social/Loading";
 import UserOnlyAlert from "../../components/basics/UseronlyAlert.component";
 
-const Wrapper = styled.div`
-
-`
+const Wrapper = styled.div``;
 
 const ImageCardBox = styled.div`
   display: flex;
@@ -30,8 +28,6 @@ export default function BookmarksPage() {
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
-
-
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [favData, setFavData] = useState<any>([]);
@@ -57,9 +53,7 @@ export default function BookmarksPage() {
 
   return (
     <div>
-      {isError ? (
-        <UserOnlyAlert />
-      ) : (
+      {isLoggedIn ? (
         <div>
           {isLoading ? (
             <div></div>
@@ -73,6 +67,8 @@ export default function BookmarksPage() {
             </Wrapper>
           )}
         </div>
+      ) : (
+        <UserOnlyAlert />
       )}
     </div>
   );
