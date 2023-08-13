@@ -39,9 +39,7 @@ export default function Detail() {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       setDetailInfo(data);
-      console.log(data.comment);
       setComments(data.comment);
       setId(data.pk);
     }

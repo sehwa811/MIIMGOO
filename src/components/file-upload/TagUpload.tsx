@@ -36,7 +36,6 @@ const TagRegistration: React.FC = () => {
   const handleTagSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (tagsList.length > 0) {
-      console.log(tagsList);
       tagUpload.mutate(tagsList);
     } else {
       alert("No tags");

@@ -27,7 +27,6 @@ const AllSelects = () => {
       setEmotionOptions(data["감정"]);
       setPeopleOptions(data["인물"]);
       setOthersOptions(data["기타"]);
-      console.log(circumOptions);
     }
   }, [data]);
   

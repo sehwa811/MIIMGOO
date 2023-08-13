@@ -7,7 +7,6 @@ const TagList = styled.div`
 `;
 
 const TagListComponent = ({ tags }: any) => {
-  console.log(tags);
   return (
     <TagList>
       {tags.map((item: any) => (

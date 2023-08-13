@@ -28,7 +28,6 @@ export const SearchTagReducer = (
     case ACTION.CLEAR:
       return {...state, searchTags: []};
     case ACTION.REMOVE:
-      console.log(state, payload)
       return {...state, searchTags: payload};
     default:
       return state;

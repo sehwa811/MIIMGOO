@@ -25,15 +25,15 @@ const ImageTitleBox = styled.div`
   padding: 0.5rem 1.25rem 0.5rem 0.5rem;
   align-items: center;
   justify-content: space-between;
-  gap: 7.125rem;
+  gap: 0;
   border-radius: 0.25rem;
   border: 1px solid var(--main-white);
 `;
 
 const TitleSpan = styled.span`
   color: var(--main-white);
-  max-width: 17rem;
-  text-align: center;
+  width: 18rem;
+  text-align: start;
   font-family: Spoqa Han Sans Neo;
   font-size: 1.25rem;
   font-style: normal;

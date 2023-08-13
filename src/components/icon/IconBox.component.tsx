@@ -25,7 +25,7 @@ const StyledDiv = styled.div`
   padding: 0.25rem 0rem;
   flex-direction: column;
   align-items: center;
-
+  gap:0.3rem;
   border-radius: 0.75rem;
   background: #0075ff;
   box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
@@ -37,7 +37,7 @@ type textProp = {
 
 const Text = styled.span<textProp>`
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   letter-spacing: -0.015rem;
   color: ${(props) => (props.active === "active" ? "white" : "#C4C4C4")};

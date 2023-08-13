@@ -70,7 +70,6 @@ export const uploadToS3 = async (
     .then(async (res) => {
       const formData = new FormData();
       const keyValue = res.data.fields.key;
-      console.log(keyValue);
 
       if (image !== null) {
         Object.keys(res.data.fields).forEach((key) => {
@@ -78,17 +77,13 @@ export const uploadToS3 = async (
         });
         formData.append("file", image);
       }
-      console.log(111111111);
-      //403 에러나는 부분
       const uploadRes = await axios.post(res.data.url, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(uploadRes.status);
 
       if (uploadRes.status === 204) {
-        console.log(2222222222);
         postTheMeme(res.data.url, keyValue);
       }
     });
@@ -117,7 +112,6 @@ export const getSearchResult = (state: any) =>
     .then((res) => res.data);
 
 export const postComment = ({ id, text }: any) => {
-  console.log("CHECK", id, text);
   return instance
     .post(
       `memes/${id}/comment`,

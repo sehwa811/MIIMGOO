@@ -48,7 +48,6 @@ const TagComponent = ({ tag }: tagProps) => {
 };
 
 const Category = (categoryName: any, options: any) => {
-    console.log(options)
   return (
     <div>
       {options ? (

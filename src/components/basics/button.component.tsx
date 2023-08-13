@@ -27,7 +27,7 @@ const StyledButton = styled.button<ButtonStyle>`
   border-radius: ${(props) => props.borderradius || "0.5rem"};
   border: ${(props)=> props.border || "0.4px solid var(--main-grey-1)"};
   width: 21.875rem;
-  height: ${(props)=> props.height};
+  height: ${(props)=> props.height || "3rem"};
   color: ${(props)=> props.color || "var(--main-typho-grey-1)"};
   background: ${(props)=> props.background || "white"};
   box-shadow: ${(props)=> props.shadow};
