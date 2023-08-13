@@ -32,6 +32,8 @@ export const getKakaoUrl = async () =>
     window.location.href = response.data.url;
   });
 
+export const emailRequest = () => instance.get("users/kakao/request/again").then((res)=>res.data);
+
 //S3에 이미지 저장
 export const uploadToS3 = async (
   imageTitle: string,
