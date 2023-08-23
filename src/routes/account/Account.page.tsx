@@ -100,11 +100,6 @@ export default function AccoutPage() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleOnClick = () => {
-    handleShow();
-    //navigate("/admin");
-  };
-
   const userLogOut = useMutation(postLogout, {
     onSuccess: () => {
       alert("성공적으로 로그아웃 되었습니다 :)");
@@ -148,10 +143,10 @@ export default function AccoutPage() {
                 <span>회원탈퇴</span>
               </DeleteAccoutBox>
 
-              {/* <AdminLogin onClick={handleOnClick}>
-              <span>밈구의 관리자로 로그인하시겠습니까?</span>
-            </AdminLogin> */}
-            
+              <AdminLogin onClick={()=>navigate("/admin")}>
+                <span>밈구의 관리자로 로그인하시겠습니까?</span>
+              </AdminLogin>
+
             </ButtonBox>
           </Wrapper>
           <Modal

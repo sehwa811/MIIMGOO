@@ -27,4 +27,4 @@ export const KakaoEmailCheckReducer = (
 };
 
 
-export const selectKakaoEmailCheck = (state:any) => state.user.emailChecked;
+export const selectKakaoEmailCheck = (state:any) => state.emailCheck.emailChecked;
