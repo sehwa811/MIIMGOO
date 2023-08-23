@@ -8,7 +8,7 @@ import {
   Label,
   FlexBox,
 } from "./CommentBox.styles";
-import { postComment } from "../../../../utils/axios";
+import { postComment } from "../../utils/axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const TextInputComponent = ({ id }: any) => {

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-import LogoPart from "../detailpage/component/LogoPart";
+import LogoPart from "../../components/LogoPart";
 import LabelComponent from "../../components/basics/label-box/Label.component";
 import { deleteUser, postLogout } from "../../utils/axios";
 
@@ -11,6 +11,7 @@ import Modal from "../admin/component/modal.component";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../store/UserInfoReducer";
 import UserOnlyAlert from "../../components/basics/UseronlyAlert.component";
+import { BigWrapper } from "../Homepage/Home.page";
 
 const Wrapper = styled.div`
   display: flex;
@@ -129,7 +130,7 @@ export default function AccoutPage() {
   return (
     <>
       {isLoggedIn ? (
-        <>
+        <BigWrapper>
           <LogoPart />
           <Wrapper>
             <LabelComponent top="1.19rem" labelText="계정" />
@@ -143,10 +144,9 @@ export default function AccoutPage() {
                 <span>회원탈퇴</span>
               </DeleteAccoutBox>
 
-              <AdminLogin onClick={()=>navigate("/admin")}>
+              <AdminLogin onClick={() => navigate("/admin")}>
                 <span>밈구의 관리자로 로그인하시겠습니까?</span>
               </AdminLogin>
-
             </ButtonBox>
           </Wrapper>
           <Modal
@@ -155,7 +155,7 @@ export default function AccoutPage() {
             height="10rem"
             close={handleClose}
           />
-        </>
+        </BigWrapper>
       ) : (
         <UserOnlyAlert />
       )}

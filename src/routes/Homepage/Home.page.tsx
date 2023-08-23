@@ -1,25 +1,23 @@
-import { useNavigate } from "react-router-dom";
-
-import styled from "styled-components";
 import LogoComponent from "../../components/basics/logo/Logo.component";
 import HomeUpperComponent from "../../components/home-upper/HomeUpper.component";
 import HomeLowerComponent from "../../components/home-lower/HomeLower.component";
-import { getHomeImg } from "../../utils/axios";
-import { useEffect, useState } from "react";
 
-const Wrapper = styled.div`
-  height: 100%;
+import styled from "styled-components";
+
+export const BigWrapper = styled.div`
+  height: auto;
+  padding-top: 3.75rem;
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+  padding-bottom: 6rem;
 `;
 
 export default function HomePage() {
-  
-  const navigate = useNavigate();
-
   return (
-    <Wrapper className="home">
+    <BigWrapper className="home">
       <LogoComponent />
       <HomeUpperComponent />
       <HomeLowerComponent />
-    </Wrapper>
+    </BigWrapper>
   );
 }

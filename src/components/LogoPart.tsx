@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import LogoComponent from "../../../components/basics/logo/Logo.component";
-import { ReactComponent as Previous } from "../../../svg/Previous.svg";
+import LogoComponent from "./basics/logo/Logo.component";
+import { ReactComponent as Previous } from "../svg/Previous.svg";
 
 import styled from "styled-components";
 

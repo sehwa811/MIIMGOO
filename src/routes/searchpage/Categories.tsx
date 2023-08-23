@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TagBox } from "../detailpage/component/TagList/Tag.component";
+import { TagBox } from "../DetailPage/Tag.component";
 
 const Label = styled.div`
   color: var(--main-white);

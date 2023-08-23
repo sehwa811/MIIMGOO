@@ -5,9 +5,10 @@ import { useLocation } from "react-router-dom";
 import { CardBox } from "../../components/home-upper/HomeUpper.component";
 import UpperCardComponent from "../../components/home-upper/UpperCard.component";
 import { useEffect, useState } from "react";
-import LogoPart from "../detailpage/component/LogoPart";
+import LogoPart from "../../components/LogoPart";
 
 import { ReactComponent as Close } from "./Close.svg";
+import { BigWrapper } from "../Homepage/Home.page";
 
 const SelectedTagsBox = styled.div`
   width: 100%;
@@ -87,7 +88,7 @@ const SearchResultPage = () => {
   }
 
   return (
-    <>
+    <BigWrapper>
       <LogoPart />
       <SelectedTagsBox>{selectedArray}</SelectedTagsBox>
 
@@ -98,7 +99,7 @@ const SearchResultPage = () => {
           <>데이터를 불러오고 있습니다...</>
         )}
       </Wrapper>
-    </>
+    </BigWrapper>
   );
 };
 

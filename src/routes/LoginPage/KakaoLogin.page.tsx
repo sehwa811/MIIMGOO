@@ -1,12 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import LoginLoadingPage from "./LoginLoading.component";
+import LoginLoadingPage from "../SubPage/LoginLoading.component";
 
-import { emailRequest, kakaoLogin } from "../../utils/axios";
-import { useDispatch, useSelector } from "react-redux";
-import createAction from "../../utils/action-creator";
-import { selectKakaoEmailCheck } from "../../store/KakaoEmailCheck";
+import { kakaoLogin } from "../../api/kakaoLogin.api";
+import { useDispatch } from "react-redux";
 
 export default function KakaoLoginPage() {
   const navigate = useNavigate();

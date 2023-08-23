@@ -1,7 +1,7 @@
-import { ReactComponent as Folder } from "../../../svg/Folder.svg";
+import { ReactComponent as Folder } from "../../svg/Folder.svg";
 
 import styled from "styled-components";
-import TagListComponent from "./TagList/TagList";
+import TagListComponent from "./TagList";
 
 const ImageInfoWrapper = styled.div`
   width: 100%;

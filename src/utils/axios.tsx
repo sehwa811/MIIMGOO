@@ -1,41 +1,10 @@
 import axios from "axios";
 import Cookie from "js-cookie";
 
-import { API_HOST } from "./API";
+import { instance } from "../api/instance";
 
 import { ITag } from "../components/file-upload/TagUpload";
 
-const instance = axios.create({
-  baseURL:
-    process.env.NODE_ENV === "development"
-      ? "/api/"
-      : "https://prod.miimgoo.site/api/",
-  withCredentials: true,
-});
-
-//네이버 로그인
-export const kakaoLogin = (code: string) =>
-  instance
-    .post(
-      "users/kakao/",
-      { code: code },
-      {
-        headers: {
-          "X-CSRFToken": Cookie.get("csrftoken") || "",
-        },
-      }
-    )
-    .then((response) => response.status);
-
-export const getKakaoUrl = async () =>
-  instance.get("users/kakao/request").then((response) => {
-    window.location.href = response.data.url;
-  });
-
-export const emailRequest = () =>
-  instance
-    .get("users/kakao/request/again")
-    .then((res) => (window.location.href = res.data.url));
 
 //S3에 이미지 저장
 export const uploadToS3 = async (

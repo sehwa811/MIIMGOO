@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import LabelComponent from "../../components/basics/label-box/Label.component";
-import LogoPart from "../detailpage/component/LogoPart";
+import LogoPart from "../../components/LogoPart";
 import { getFavImages } from "../../utils/axios";
 import { ReactElement, useEffect, useState } from "react";
 import BookmarkImageCard from "./BookmarkImageCard";
@@ -8,8 +8,9 @@ import BookmarkImageCard from "./BookmarkImageCard";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../store/UserInfoReducer";
-import LoadingComponent from "../social/Loading";
+import LoadingComponent from "../SubPage/Loading";
 import UserOnlyAlert from "../../components/basics/UseronlyAlert.component";
+import { BigWrapper } from "../Homepage/Home.page";
 
 const Wrapper = styled.div``;
 
@@ -58,13 +59,13 @@ export default function BookmarksPage() {
           {isLoading ? (
             <div></div>
           ) : (
-            <Wrapper>
+            <BigWrapper>
               <LogoPart />
               <LabelComponent top="1.19rem" labelText="즐겨찾기" />
               <ImageCardBox className="bookmarks-imagecards">
                 {components}
               </ImageCardBox>
-            </Wrapper>
+            </BigWrapper>
           )}
         </div>
       ) : (

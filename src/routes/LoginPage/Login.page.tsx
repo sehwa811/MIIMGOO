@@ -12,7 +12,7 @@ import {
   ButtonLabel,
   Label,
 } from "./Login.styles";
-import { emailRequest, getKakaoUrl } from "../../utils/axios";
+import { emailRequest, getKakaoUrl } from "../../api/kakaoLogin.api";
 
 import Logo from "./Logo.png";
 import { selectKakaoEmailCheck } from "../../store/KakaoEmailCheck";
@@ -29,7 +29,7 @@ export default function LoginPage() {
   return (
     <Background className="login-page">
       <WelcomeMsg />
-      
+
       <LogoBox>
         <img src={Logo} />
       </LogoBox>

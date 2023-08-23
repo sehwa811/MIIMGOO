@@ -11,6 +11,8 @@ import { setImageTitle, setImage } from "../../store/image-upload/ImageAction";
 
 import { uploadToS3 } from "../../utils/axios";
 import TagRegistration from "./TagUpload";
+import { postFileName } from "../../api/imageUpload.api";
+import { useMutation } from "@tanstack/react-query";
 
 const UploadButton = styled.div`
   border: 2px solid black;
@@ -30,15 +32,25 @@ const UploadImage = () => {
   const imageTitle = useSelector(selectImgTitle);
   const image = useSelector(selectImg);
 
-
   const onImgChange = (e: any) => {
     const selectedImage = e.target.files[0];
     dispatch(setImage(selectedImage));
     dispatch(setImageTitle(selectedImage.name));
   };
 
+  /* const getUploadUrl = useMutation(postFileName, {
+    onSuccess: ({ data }) => {
+      console.log(data);
+    },
+    onError: () => {
+      console.log("error")
+    }
+  }); */
+
   const sendToServer = () => {
     uploadToS3(imageTitle, image, inputText, tags);
+
+
     setInputText("");
   };
 
@@ -57,8 +69,11 @@ const UploadImage = () => {
         type="text"
         value={inputText}
         onChange={(e: any) => setInputText(e.target.value)}
-      /><br></br>
+      />
+      <br></br>
+
       <AllSelects />
+
       <button onClick={sendToServer}>등록하기</button>
 
       <TagRegistration />

@@ -1,12 +1,11 @@
 import html2canvas from "html2canvas";
 import { styled } from "styled-components";
 
-import Button from "../../../components/basics/button.component";
-import { ReactComponent as Heart } from "../../../svg/Heartbeat.white.svg";
-import { ReactComponent as Download } from "../../../svg/Download_light.svg";
+import Button from "../../components/basics/button.component";
+import { ReactComponent as Download } from "../../svg/Download_light.svg";
 import { saveAs } from "file-saver";
-import { getBlob, postFav } from "../../../utils/axios";
-import Icon from "../../../components/icon/IconFactory.component";
+import { getBlob, postFav } from "../../utils/axios";
+import Icon from "../../components/icon/IconFactory.component";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const Wrapper = styled.div`

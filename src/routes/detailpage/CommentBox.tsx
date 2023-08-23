@@ -1,20 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { Wrapper, Comment, Title, FlexBox } from "./CommentBox.styles";
 
-import {
-  Wrapper,
-  Title,
-  Textinput,
-  Comment,
-  InputButton,
-  Label,
-  FlexBox,
-} from "./CommentBox.styles";
-import { useMutation } from "@tanstack/react-query";
-import { postComment } from "../../../../utils/axios";
-import TextInput from "./TextInput";
 import TextInputComponent from "./TextInput";
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../../../store/UserInfoReducer";
+import { selectIsLoggedIn } from "../../store/UserInfoReducer";
 
 
 const CommentBox = ({ id, comments }: any) => {

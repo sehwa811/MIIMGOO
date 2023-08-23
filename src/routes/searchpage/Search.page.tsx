@@ -1,21 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import LogoPart from "../detailpage/component/LogoPart";
+import LogoPart from "../../components/LogoPart";
 import { getTagsList } from "../../utils/axios";
 import { useEffect, useState } from "react";
-import { TagBox } from "../detailpage/component/TagList/Tag.component";
+import { TagBox } from "../DetailPage/Tag.component";
 
 import styled from "styled-components";
-import Category from "./Categories";
 import SelectedTags from "./SelectedTag.component";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchToReducer } from "../../store/tags/TagAction";
-import { selectTags } from "../../store/tags/TagSelector";
-import { selectSearchTags } from "../../store/searchTags/SearchTagSelector";
+
 import {
   changeColor,
   searchTagAdd,
   searchTagRemove,
 } from "../../store/searchTags/SearchTagAction";
+import { selectSearchTags } from "../../store/searchTags/SearchTagSelector";
+import { BigWrapper } from "../Homepage/Home.page";
 
 const AllBox = styled.div`
   display: flex;
@@ -131,7 +131,7 @@ export default function SearchPage() {
       {isLoading ? (
         <div></div>
       ) : (
-        <div className="search-page">
+        <BigWrapper className="search-page">
           <LogoPart />
 
           <SelectedTags />
@@ -193,7 +193,7 @@ export default function SearchPage() {
               </Categories>
             </CategoriesBox>
           </AllBox>
-        </div>
+        </BigWrapper>
       )}
     </>
   );

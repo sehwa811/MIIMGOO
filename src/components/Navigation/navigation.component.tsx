@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 import IconBox, { IconItems } from "../icon/IconBox.component";
 
@@ -22,6 +22,7 @@ const NavBox = styled.nav`
 
 const Navigation = () => {
   return (
+    <>
     <NavBox>
       {IconItems.map((item) => (
         <IconBox
@@ -31,7 +32,10 @@ const Navigation = () => {
           route={item.route}
         />
       ))}
+      
     </NavBox>
+    <Outlet />
+    </>
   );
 };
 
