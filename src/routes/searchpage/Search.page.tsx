@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import LogoPart from "../../components/LogoPart";
 import { getTagsList } from "../../utils/axios";
 import { useEffect, useState } from "react";
-import { TagBox } from "../detailPage/Tag.component";
+import { TagBox } from "../detailpage/Tag.component";
 
 import styled from "styled-components";
 import SelectedTags from "./SelectedTag.component";
