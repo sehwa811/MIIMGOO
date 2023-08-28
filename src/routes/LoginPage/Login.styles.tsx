@@ -1,4 +1,14 @@
+import { keyframes } from "styled-components";
 import styled from "styled-components";
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 export const Background = styled.div`
   background-color: var(--main-white);

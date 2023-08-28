@@ -2,6 +2,7 @@ import Crying from "./404.gif";
 import styled from "styled-components";
 import LogoComponent from "./logo/Logo.component";
 import { useNavigate } from "react-router-dom";
+import { BigWrapper } from "../../routes/Homepage/Home.page";
 
 const NotFoundWrapper = styled.div`
   display: flex;
@@ -10,7 +11,6 @@ const NotFoundWrapper = styled.div`
   align-items: flex-start;
   gap: 5rem;
   position: relative;
-  margin-bottom: 6rem;
 `;
 
 const Wrapper = styled.div`
@@ -59,18 +59,20 @@ const NotFound = () => {
   const navigate = useNavigate();
 
   return (
-    <NotFoundWrapper>
-      <LogoComponent />
-      <Wrapper className="not-found">
-        <img src={Crying} />
+    <BigWrapper>
+      <NotFoundWrapper>
+        <LogoComponent />
+        <Wrapper className="not-found">
+          <img src={Crying} />
 
-        <TextBox>
-          <text>죄송합니다.</text>
-          <text>페이지를 찾을 수 없어요.</text>
-        </TextBox>
-        <span onClick={()=>navigate(-1)}  >이전 화면으로 이동하기</span>
-      </Wrapper>
-    </NotFoundWrapper>
+          <TextBox>
+            <text>죄송합니다.</text>
+            <text>페이지를 찾을 수 없어요.</text>
+          </TextBox>
+          <span onClick={() => navigate(-1)}>이전 화면으로 이동하기</span>
+        </Wrapper>
+      </NotFoundWrapper>
+    </BigWrapper>
   );
 };
 

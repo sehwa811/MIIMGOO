@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import AllSelects from "../../routes/admin/component/selectBox/AllSelects.component";
+import AllSelects from "../../routes/AdminPage/AllSelects.component";
 import { selectTags } from "../../store/tags/TagSelector";
 import {
   selectImg,
@@ -9,10 +9,8 @@ import {
 } from "../../store/image-upload/ImageSelector";
 import { setImageTitle, setImage } from "../../store/image-upload/ImageAction";
 
-import { uploadToS3 } from "../../utils/axios";
 import TagRegistration from "./TagUpload";
-import { postFileName } from "../../api/imageUpload.api";
-import { useMutation } from "@tanstack/react-query";
+import { uploadToS3 } from "../../api/imageUpload.api";
 
 const UploadButton = styled.div`
   border: 2px solid black;
@@ -45,12 +43,12 @@ const UploadImage = () => {
     onError: () => {
       console.log("error")
     }
-  }); */
+  }); 
+  useMutation 사용해서 data 뽑아내면 계속 undefined
+  */
 
   const sendToServer = () => {
     uploadToS3(imageTitle, image, inputText, tags);
-
-
     setInputText("");
   };
 

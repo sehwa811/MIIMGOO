@@ -10,7 +10,7 @@ import BookmarksPage from "./routes/BookmarkPage/Bookmarks.page";
 import SearchPage from "./routes/Searchpage/Search.page";
 import SearchResultPage from "./routes/Searchpage/SearchResult.page";
 import AccoutPage from "./routes/AccountPage/Account.page";
-import AdminPage from "./routes/admin/Admin.page";
+import AdminPage from "./routes/AdminPage/Admin.page";
 import NotFound from "./components/basics/NotFound.component";
 
 function App() {

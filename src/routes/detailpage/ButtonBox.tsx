@@ -1,12 +1,12 @@
-import html2canvas from "html2canvas";
 import { styled } from "styled-components";
 
 import Button from "../../components/basics/button.component";
 import { ReactComponent as Download } from "../../svg/Download_light.svg";
-import { saveAs } from "file-saver";
 import { getBlob, postFav } from "../../utils/axios";
 import Icon from "../../components/icon/IconFactory.component";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
+import { selectIsLoggedIn } from "../../store/UserInfoReducer";
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,6 +33,7 @@ const InsideContents = styled.div`
 `;
 
 const ButtonBox = ({ detailInfo }: any) => {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const url: string = detailInfo.meme_url;
   const isFav: boolean = detailInfo.is_favorite;
   const id: number = detailInfo.pk;
@@ -96,7 +97,7 @@ const ButtonBox = ({ detailInfo }: any) => {
             </InsideContents>
           </Button>
 
-          <Button
+          {isLoggedIn && <Button
             onClick={handleIsFav}
             border="1px solid white;"
             color="white"
@@ -109,7 +110,7 @@ const ButtonBox = ({ detailInfo }: any) => {
               <ButtonLabel>즐겨찾기</ButtonLabel>
               <Icon icon="favorite" isActive={isFav} />
             </InsideContents>
-          </Button>
+          </Button>}
         </Wrapper>
       ) : (
         <div />

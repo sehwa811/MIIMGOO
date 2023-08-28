@@ -7,7 +7,7 @@ import LabelComponent from "../../components/basics/label-box/Label.component";
 import { deleteUser, postLogout } from "../../utils/axios";
 
 import styled from "styled-components";
-import Modal from "../admin/component/modal.component";
+import Modal from "../AdminPage/modal.component";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../store/UserInfoReducer";
 import UserOnlyAlert from "../../components/basics/UseronlyAlert.component";

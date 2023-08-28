@@ -2,25 +2,24 @@ import { instance } from "./instance";
 import axios from "axios";
 
 
-export const postFileName = (imageTitle: string) =>
+/* export const postFileName = (imageTitle: string) =>
   instance.post("memes/uploadURL/", {
     filename: imageTitle,
   }).then((res)=> res.data)
+ */
 
 
-
-//S3에 이미지 저장
 export const uploadToS3 = async (
   imageTitle: string,
   image: any,
   inputTitle: string,
   tags: string[]
 ) => {
+
   //2
   const postTheMeme = async (URL: string, keyValue: string) =>
     instance.post(
       "memes/",
-
       {
         title: inputTitle,
         meme_url: `${URL}/${keyValue}`,
@@ -29,7 +28,6 @@ export const uploadToS3 = async (
     );
 
   //1
-
   instance
     .post("memes/uploadURL/", {
       filename: imageTitle,
@@ -44,6 +42,7 @@ export const uploadToS3 = async (
         });
         formData.append("file", image);
       }
+      
       const uploadRes = await axios.post(res.data.url, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
