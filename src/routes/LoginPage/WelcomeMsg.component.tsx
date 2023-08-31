@@ -18,6 +18,10 @@ const StyledDiv = styled.div`
   span {
     color: var(--main-orange);
   }
+
+  @media (max-height: 700px) {
+    top: 10%;
+  }
 `;
 
 

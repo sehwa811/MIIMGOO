@@ -22,11 +22,8 @@ const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   height: auto;
-  background: linear-gradient(#0500ff 10%, rgba(137,135,234)30%, rgba(196, 196, 196, 0));
-  background-repeat: no-repeat;
+  
 `;
-
-
 
 const client = new QueryClient();
 
@@ -37,7 +34,7 @@ root.render(
     <QueryClientProvider client={client}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Wrapper>
+          <Wrapper className="outside-app">
             <App />
             <ReactQueryDevtools />
           </Wrapper>

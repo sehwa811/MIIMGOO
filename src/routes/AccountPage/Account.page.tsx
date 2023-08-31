@@ -13,6 +13,9 @@ import { selectIsLoggedIn } from "../../store/UserInfoReducer";
 import UserOnlyAlert from "../../components/basics/UseronlyAlert.component";
 import { BigWrapper } from "../Homepage/Home.page";
 
+const AccountBigWrapper = styled(BigWrapper)`
+height: 100vh;`
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -130,7 +133,7 @@ export default function AccoutPage() {
   return (
     <>
       {isLoggedIn ? (
-        <BigWrapper>
+        <AccountBigWrapper>
           <LogoPart />
           <Wrapper>
             <LabelComponent top="1.19rem" labelText="계정" />
@@ -155,7 +158,7 @@ export default function AccoutPage() {
             height="10rem"
             close={handleClose}
           />
-        </BigWrapper>
+        </AccountBigWrapper>
       ) : (
         <UserOnlyAlert />
       )}

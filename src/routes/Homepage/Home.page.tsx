@@ -10,6 +10,9 @@ export const BigWrapper = styled.div`
   padding-right: 1.25rem;
   padding-left: 1.25rem;
   padding-bottom: 6rem;
+  width: 100%;
+  background: linear-gradient(180deg, #0500FF 0%, rgba(196, 196, 196, 0.00) 129.54%);
+  background-repeat: no-repeat;
 `;
 
 export default function HomePage() {

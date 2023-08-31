@@ -15,6 +15,7 @@ export const Background = styled.div`
   height: 100vh;
   padding-right: 1.25rem;
   padding-left: 1.25rem;
+  width: 100%;
 `;
 
 export const LogoBox = styled.div`
@@ -31,6 +32,10 @@ export const LogoBox = styled.div`
     width: 15rem;
     height: 15rem;
   }
+
+  @media (max-height: 700px) {
+    top: 33%;
+  }
 `;
 
 export const ButtonBox = styled.div`
@@ -42,6 +47,10 @@ export const ButtonBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-height: 700px) {
+    bottom: 6%;
+  }
 `;
 
 export const ButtonLabel = styled.span`
