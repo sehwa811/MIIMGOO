@@ -4,6 +4,10 @@ import LogoComponent from "./logo/Logo.component";
 import { useNavigate } from "react-router-dom";
 import { BigWrapper } from "../../routes/Homepage/Home.page";
 
+const UserOnlyBigWrapper = styled(BigWrapper)`
+  height: 100vh;
+`;
+
 const NotFoundWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,7 +64,7 @@ const UserOnlyAlert = () => {
   const navigate = useNavigate();
 
   return (
-    <BigWrapper>
+    <UserOnlyBigWrapper>
       <NotFoundWrapper>
         <LogoComponent />
         <Wrapper className="not-found">
@@ -72,7 +76,7 @@ const UserOnlyAlert = () => {
           <span onClick={() => navigate("/")}>로그인 하러가기</span>
         </Wrapper>
       </NotFoundWrapper>
-    </BigWrapper>
+    </UserOnlyBigWrapper>
   );
 };
 

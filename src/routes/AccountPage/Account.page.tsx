@@ -14,7 +14,8 @@ import UserOnlyAlert from "../../components/basics/UseronlyAlert.component";
 import { BigWrapper } from "../Homepage/Home.page";
 
 const AccountBigWrapper = styled(BigWrapper)`
-height: 100vh;`
+  height: 100vh;
+`;
 
 const Wrapper = styled.div`
   display: flex;

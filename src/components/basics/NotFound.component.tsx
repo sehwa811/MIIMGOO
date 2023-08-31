@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { BigWrapper } from "../../routes/Homepage/Home.page";
 
 const NotFoundBigWrapper = styled(BigWrapper)`
-height: 100vh;`
+  height: 100vh;
+`;
 
 const NotFoundWrapper = styled.div`
   display: flex;
