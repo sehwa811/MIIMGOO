@@ -4,6 +4,9 @@ import LogoComponent from "./logo/Logo.component";
 import { useNavigate } from "react-router-dom";
 import { BigWrapper } from "../../routes/Homepage/Home.page";
 
+const NotFoundBigWrapper = styled(BigWrapper)`
+height: 100vh;`
+
 const NotFoundWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -59,7 +62,7 @@ const NotFound = () => {
   const navigate = useNavigate();
 
   return (
-    <BigWrapper>
+    <NotFoundBigWrapper>
       <NotFoundWrapper>
         <LogoComponent />
         <Wrapper className="not-found">
@@ -72,7 +75,7 @@ const NotFound = () => {
           <span onClick={() => navigate(-1)}>이전 화면으로 이동하기</span>
         </Wrapper>
       </NotFoundWrapper>
-    </BigWrapper>
+    </NotFoundBigWrapper>
   );
 };
 

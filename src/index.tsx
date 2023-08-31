@@ -21,8 +21,8 @@ const Wrapper = styled.div`
   max-width: 24.375rem;
   margin-left: auto;
   margin-right: auto;
-  height: auto;
-  
+  margin-bottom: 0;
+  height: 100vh;
 `;
 
 const client = new QueryClient();
