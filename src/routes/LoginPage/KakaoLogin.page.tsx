@@ -11,6 +11,9 @@ import { selectKakaoEmailCheck } from "../../store/KakaoEmailCheck";
 export default function KakaoLoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
+  const userStatus = useSelector(selectIsLoggedIn);
+  const emailChecked = useSelector(selectKakaoEmailCheck);
 
   const { search } = useLocation();
   /* const mutation = useMutation(kakaoLogin, {
@@ -28,8 +31,6 @@ export default function KakaoLoginPage() {
     },
   });
  */
-  const userStatus = useSelector(selectIsLoggedIn);
-  const emailChecked = useSelector(selectKakaoEmailCheck);
 
   const confirmLogin = async () => {
     const params = new URLSearchParams(search);

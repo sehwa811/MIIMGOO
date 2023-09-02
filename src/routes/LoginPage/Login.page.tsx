@@ -11,24 +11,15 @@ import {
   ButtonLabel,
   Label,
 } from "./Login.styles";
-import { emailRequest, getKakaoUrl } from "../../api/kakaoLogin.api";
 
 import Logo from "./Logo.png";
-import { selectKakaoEmailCheck } from "../../store/KakaoEmailCheck";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { kakaoLoginStart } from "../../store/login-saga/login.action";
-import { selectIsLoggedIn } from "../../store/UserInfoReducer";
 
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const emailChecked = useSelector(selectKakaoEmailCheck);
-
-  const userStatus = useSelector(selectIsLoggedIn);
-  if (userStatus) {
-    navigate("/home");
-  }
 
   const gotoHome = () => {
     navigate("/home");
