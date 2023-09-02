@@ -3,8 +3,10 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import createSagaMiddleware from "redux-saga";
 
 import { rootReducer } from "./root-reducer";
+import { rootSaga } from "./root-saga";
 
 const persistConfig = {
   key: "root",
@@ -12,12 +14,15 @@ const persistConfig = {
   whitelist: ["user"],
 };
 
+const sagaMiddleware = createSagaMiddleware();
+
 const persistedReudcer = persistReducer(persistConfig, rootReducer);
 
 const middleWares: any[] = [
   process.env.NODE_ENV === "development" && 
   logger,
   thunk,
+  sagaMiddleware
 ].filter(Boolean);
 
 const composedEnhancers = compose(applyMiddleware(...middleWares));
@@ -27,6 +32,7 @@ export const store = createStore(
   undefined,
   composedEnhancers
 );
-//index.js의 Provider에 전달된 store prop
+
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);

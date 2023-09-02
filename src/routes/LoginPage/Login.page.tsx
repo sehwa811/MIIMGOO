@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import Button from "../../components/basics/button.component";
 import WelcomeMsg from "./WelcomeMsg.component";
@@ -16,11 +15,20 @@ import { emailRequest, getKakaoUrl } from "../../api/kakaoLogin.api";
 
 import Logo from "./Logo.png";
 import { selectKakaoEmailCheck } from "../../store/KakaoEmailCheck";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { kakaoLoginStart } from "../../store/login-saga/login.action";
+import { selectIsLoggedIn } from "../../store/UserInfoReducer";
+
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const emailChecked = useSelector(selectKakaoEmailCheck);
+
+  const userStatus = useSelector(selectIsLoggedIn);
+  if (userStatus) {
+    navigate("/home");
+  }
 
   const gotoHome = () => {
     navigate("/home");
@@ -31,12 +39,13 @@ export default function LoginPage() {
       <WelcomeMsg />
 
       <LogoBox>
-        <img src={Logo} />
+        <img src={Logo} alt="logo" />
       </LogoBox>
 
       <ButtonBox>
         <Button
-          onClick={emailChecked ? getKakaoUrl : emailRequest}
+          //onClick={emailChecked ? getKakaoUrl : emailRequest}
+          onClick={() => dispatch(kakaoLoginStart())}
           color="#000"
           background="#FEE500"
           border="none"

@@ -1,0 +1,6 @@
+export const LOGIN_ACTION_TYPES = {
+    LOGIN_START: 'login/LOGIN_START',
+    LOGIN_SUCCESS: 'login/LOGIN_SUCCESS',
+    LOGIN_FAILED: 'login/LOGIN_FAILED',
+    CONFIRM_LOGIN : 'login/CONFIRM_LOGIN'
+};

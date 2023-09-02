@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0;
+  margin-top: 0;
   height: 100vh;
 `;
 

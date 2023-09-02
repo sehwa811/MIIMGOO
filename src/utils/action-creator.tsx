@@ -1,6 +1,6 @@
 import { actionType } from "../store/tags/TagReducer";
 
-const createAction = (type: string, payload?: actionType) => ({
+const createAction = (type: string, payload?: any) => ({
   type,
   payload,
 });
