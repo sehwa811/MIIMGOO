@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import { getSearchResult } from "../../utils/axios";
 import { useLocation } from "react-router-dom";
-import { CardBox } from "../../components/home-upper/HomeUpper.component";
 import UpperCardComponent from "../../components/home-upper/UpperCard.component";
 import { useEffect, useState } from "react";
 import LogoPart from "../../components/LogoPart";

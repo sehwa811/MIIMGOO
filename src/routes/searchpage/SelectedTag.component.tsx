@@ -1,15 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectTags } from "../../store/tags/TagSelector";
 import { selectSearchTags } from "../../store/searchTags/SearchTagSelector";
-import { searchTagAdd } from "../../store/tags/TagAction";
-import { getSearchResult } from "../../utils/axios";
 import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as Search } from "../../svg/Search.svg";
 import { ReactComponent as Close } from "../../svg/Close.svg";
 import { clearSearchTag, searchTagRemove } from "../../store/searchTags/SearchTagAction";
-import { useEffect } from "react";
 
 const SelectedBox = styled.div`
   display: inline-flex;

@@ -22,7 +22,6 @@ export const iconTypes: IconType[] = Object.keys(icons) as IconType[];
 export interface IconProps {
   icon: IconType;
   isActive?: boolean;
-  
 }
 
 function Icon({ icon, isActive }: IconProps): ReactElement {

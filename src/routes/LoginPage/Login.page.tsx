@@ -14,7 +14,6 @@ import {
 
 import Logo from "../../assets/Logo.png"
 import { useDispatch, useSelector } from "react-redux";
-import { kakaoLoginStart } from "../../store/login-saga/login.action";
 import { emailRequest, getKakaoUrl } from "../../api/kakaoLogin.api";
 import { selectKakaoEmailCheck } from "../../store/KakaoEmailCheck";
 

@@ -15,7 +15,7 @@ export const UserInfoReducer = (
   state = INITIAL_VALUE,
   action: actiontype
 ): StateValue => {
-  const { type, payload } = action;
+  const { type } = action;
   switch (type) {
     case "USER_LOG_IN":
         return { ...state, isLoggedin: true };
