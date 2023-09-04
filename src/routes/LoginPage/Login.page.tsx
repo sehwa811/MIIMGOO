@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/basics/button.component";
 import WelcomeMsg from "./WelcomeMsg.component";
-import { ReactComponent as Kakao } from "./kakao2.svg";
+import { ReactComponent as Kakao } from "../../svg/kakao2.svg";
 
 import {
   Background,
@@ -12,7 +12,7 @@ import {
   Label,
 } from "./Login.styles";
 
-import Logo from "./Logo.png";
+import Logo from "../../assets/Logo.png"
 import { useDispatch, useSelector } from "react-redux";
 import { kakaoLoginStart } from "../../store/login-saga/login.action";
 import { emailRequest, getKakaoUrl } from "../../api/kakaoLogin.api";

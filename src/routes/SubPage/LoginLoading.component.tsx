@@ -1,4 +1,4 @@
-import MiimgooEye from "./loading.gif";
+import MiimgooEye from "../../assets/loading.gif";
 
 import styled from "styled-components";
 

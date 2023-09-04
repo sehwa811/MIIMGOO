@@ -1,4 +1,4 @@
-import Loading from "./loading.gif";
+import Loading from "../../assets/loading.gif";
 import styled from "styled-components";
 import LogoComponent from "../../components/basics/logo/Logo.component";
 import { useNavigate } from "react-router-dom";

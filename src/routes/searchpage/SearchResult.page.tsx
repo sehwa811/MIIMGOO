@@ -7,7 +7,7 @@ import UpperCardComponent from "../../components/home-upper/UpperCard.component"
 import { useEffect, useState } from "react";
 import LogoPart from "../../components/LogoPart";
 
-import { ReactComponent as Close } from "./Close.svg";
+import { ReactComponent as Close } from "../../svg/Close.svg";
 import { BigWrapper } from "../Homepage/Home.page";
 
 const SelectedTagsBox = styled.div`
