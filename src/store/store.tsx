@@ -14,7 +14,7 @@ const persistConfig = {
   whitelist: ["user"],
 };
 
-const sagaMiddleware = createSagaMiddleware();
+//const sagaMiddleware = createSagaMiddleware();
 
 const persistedReudcer = persistReducer(persistConfig, rootReducer);
 
@@ -22,7 +22,7 @@ const middleWares: any[] = [
   process.env.NODE_ENV === "development" && 
   logger,
   thunk,
-  sagaMiddleware
+  //sagaMiddleware
 ].filter(Boolean);
 
 const composedEnhancers = compose(applyMiddleware(...middleWares));
@@ -33,6 +33,6 @@ export const store = createStore(
   composedEnhancers
 );
 
-sagaMiddleware.run(rootSaga);
+//sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);

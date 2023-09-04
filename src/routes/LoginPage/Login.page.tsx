@@ -13,11 +13,14 @@ import {
 } from "./Login.styles";
 
 import Logo from "./Logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { kakaoLoginStart } from "../../store/login-saga/login.action";
+import { emailRequest, getKakaoUrl } from "../../api/kakaoLogin.api";
+import { selectKakaoEmailCheck } from "../../store/KakaoEmailCheck";
 
 
 export default function LoginPage() {
+  const emailChecked = useSelector(selectKakaoEmailCheck)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,8 +38,8 @@ export default function LoginPage() {
 
       <ButtonBox>
         <Button
-          //onClick={emailChecked ? getKakaoUrl : emailRequest}
-          onClick={() => dispatch(kakaoLoginStart())}
+          onClick={emailChecked ? getKakaoUrl : emailRequest}
+          //onClick={() => dispatch(kakaoLoginStart())}
           color="#000"
           background="#FEE500"
           border="none"

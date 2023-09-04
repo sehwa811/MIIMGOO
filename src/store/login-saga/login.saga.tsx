@@ -19,7 +19,7 @@ export function* kakaoLoginConfirmWithCode(code: any) {
     yield call(kakaoLogin, code);
     yield put(kakaoLoginSuccess());
   } catch (error) {
-    //error가 403인 경우에만 실행되도록 수정
+    //error가 403인 경우에만 실행되도록 수정 필요함
     yield call(emailRequest);
   }
 }
